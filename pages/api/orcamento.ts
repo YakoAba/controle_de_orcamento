@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { openDB } from "./sqlite";
-import { JsonData } from "../context";
+import { JsonData } from "../../context";
 
 type Data = {
     status: string,

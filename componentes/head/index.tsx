@@ -6,8 +6,9 @@ import { useEffect } from 'react';
 export default function MyHead() {
   useEffect(() => {
     
-    import('bootstrap/dist/js/bootstrap.bundle.min.js');
+  import('bootstrap');
   }, []);
+  
   return (
     <Head>
       <meta charSet="UTF-8" />

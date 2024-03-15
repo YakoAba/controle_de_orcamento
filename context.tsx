@@ -41,7 +41,7 @@ interface GlobalProviderProps {
   children: React.ReactNode;
 }
 
-export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
+export  const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   const [jsonData, setData] = useState<JsonData>({
     dataOrcamento: '',
     validadeOrcamento: '',
@@ -79,7 +79,7 @@ export const GlobalProvider: React.FC<GlobalProviderProps> = ({ children }) => {
   );
 };
 
-export const useGlobalContext = () => {
+export  const useGlobalContext = () => {
   const context = useContext(GlobalContext);
   if (!context) {
     throw new Error('useGlobalContext must be used within a GlobalProvider');
