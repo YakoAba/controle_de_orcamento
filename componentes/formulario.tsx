@@ -1,6 +1,6 @@
 //formulario.tsx
 
-import { useGlobalContext } from "@/pages/context";
+import { useGlobalContext } from "@/context";
 
 
 export default function FormularioOrcamento({ dados, produtos, prazos, envios, marca, produto }: any) {

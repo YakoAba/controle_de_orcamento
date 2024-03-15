@@ -1,4 +1,4 @@
-import { useGlobalContext } from "@/pages/context";
+import { useGlobalContext } from "@/context";
 import { ChangeEvent } from "react";
 
 //inputDate.tsx
@@ -14,7 +14,7 @@ export default function ProdutoInput() {
 
     return (
         <div className="form-group mt-2 mb-2">
-            <label htmlFor={'nomeProduto'} className="text-white">Nome</label>
+            <label htmlFor={'nomeProduto'} className="text-white">Nome do Produto</label>
             <input
                 type="text"
                 id="nomeProduto" name="nomeProduto" placeholder="Nome do produto"

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Produto, useGlobalContext } from '@/pages/context'; // Importe o tipo Produto e useGlobalContext do seu contexto
+import { Produto, useGlobalContext } from '@/context'; // Importe o tipo Produto e useGlobalContext do seu contexto
 import { Modal, Button, Form } from 'react-bootstrap';
 
 const AdicionarProduto: React.FC = () => {

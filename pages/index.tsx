@@ -9,7 +9,7 @@ import AbaEnvio from '@/componentes/main/envioAba';
 import AbaProduto from '@/componentes/main/produtoAba';
 import AbaMarca from '@/componentes/main/marcaAba';
 
-const Home = () => {
+export default function  Home(){
   return (
     <>
       <MyHead />
@@ -26,5 +26,3 @@ const Home = () => {
     </>
   );
 };
-
-export default Home;

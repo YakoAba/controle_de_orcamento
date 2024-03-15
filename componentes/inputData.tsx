@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { useGlobalContext } from '../pages/context';
+import { useGlobalContext } from '../context';
 
 const DataInput: React.FC = () => {
   const { jsonData, setData } = useGlobalContext();

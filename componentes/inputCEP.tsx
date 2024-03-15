@@ -1,4 +1,4 @@
-import { useGlobalContext } from '@/pages/context';
+import { useGlobalContext } from '@/context';
 import MaskedInput from 'react-text-mask';
 
 export default function CEPInput(){

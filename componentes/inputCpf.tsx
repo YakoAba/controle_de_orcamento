@@ -1,5 +1,5 @@
 import MaskedInput from 'react-text-mask';
-import { useGlobalContext } from "@/pages/context";
+import { useGlobalContext } from "@/context";
 
 const CPFInput: React.FC = () => {
 

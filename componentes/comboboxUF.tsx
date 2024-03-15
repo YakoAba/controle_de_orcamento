@@ -1,4 +1,4 @@
-import { useGlobalContext } from "@/pages/context";
+import { useGlobalContext } from "@/context";
 
 export default function ComboBoxUF() {
     const { jsonData, setData } = useGlobalContext();

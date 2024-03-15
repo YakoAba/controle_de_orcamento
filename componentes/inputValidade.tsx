@@ -1,4 +1,4 @@
-import { useGlobalContext } from "@/pages/context";
+import { useGlobalContext } from "@/context";
 import { ChangeEvent } from "react";
 
 export default function ValidadeInput() {

@@ -6,7 +6,7 @@ export default function AbaMarca() {
     <fieldset className="mt-3 mb-3 text-white">
       <legend style={{ fontSize: 'large', color: 'white' }}>Cadastro de Marcas</legend>
       <MarcaInput />
-      <Button variant="primary" className="btn btn-primary mt-3 mx-1" >Adicionar</Button>
+      <Button variant="primary" className="btn btn-primary mt-3 mx-1" >Cadastrar</Button>
     </fieldset>
   );
 }

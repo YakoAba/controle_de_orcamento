@@ -1,4 +1,4 @@
-import { useGlobalContext } from "@/pages/context";
+import { useGlobalContext } from "@/context";
 
 export default function ComboBoxFormaEnvio() {
     const { jsonData, setData } = useGlobalContext();

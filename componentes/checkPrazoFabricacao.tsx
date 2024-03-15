@@ -1,4 +1,4 @@
-import { useGlobalContext } from '@/pages/context';
+import { useGlobalContext } from '@/context';
 import React, { useState } from 'react';
 
 export default function PrazoFabricacao() {
