@@ -1,16 +1,16 @@
-import { useGlobalContext } from "@/context";
-import { ChangeEvent } from "react";
+// import { useGlobalContext } from "@/context";
+// import { ChangeEvent } from "react";
 
 //inputDate.tsx
 export default function MarcaInput() {
-    const { jsonData, setData } = useGlobalContext();
+    // const { jsonData, setData } = useGlobalContext();
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setData({
-            ...jsonData,
-            marca: event.target.value,
-        });
-    };
+    // const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    //     setData({
+    //         ...jsonData,
+    //         marca: event.target.value,
+    //     });
+    // };
 
     return (
         <div className="form-group mt-2 mb-2">
@@ -19,8 +19,8 @@ export default function MarcaInput() {
                 type="text"
                 id="nomeMarca" name="nomeMarca" placeholder="Nome da marca"
                 className={`form-control bg-secondary text-white border border-secondary`}
-                value={jsonData.marca}
-                onChange={handleChange}
+                // value={jsonData.marca}
+                // onChange={handleChange}
             />
         </div>
     );

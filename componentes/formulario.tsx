@@ -45,7 +45,6 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
   
   return (
     <div className="container mt-1 p-1">
-      <form id="formularioOrcamento">
         <ul className="nav nav-tabs" id="myTab" role="tablist">
           <li className="nav-item" role="presentation">
             <button className="nav-link active" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados"
@@ -64,6 +63,10 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
               role="tab" aria-controls="envios" aria-selected="false">Envios</button>
           </li>
           <li className="nav-item" role="presentation">
+            <button className="nav-link" id="cliente-tab" data-bs-toggle="tab" data-bs-target="#cliente" type="button"
+              role="tab" aria-controls="cliente" aria-selected="false">Cadastro de Clientes:</button>
+          </li>
+          <li className="nav-item" role="presentation">
             <button className="nav-link" id="marca-tab" data-bs-toggle="tab" data-bs-target="#marca" type="button"
               role="tab" aria-controls="marca" aria-selected="false">Cadastro de Marcas</button>
           </li>
@@ -73,17 +76,21 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
           </li>
         </ul>
         <div className="tab-content" id="myTabContent">
-        <div className="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">            
+          <div className="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">            
             {dados}
+            <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
           </div>
           <div className="tab-pane fade" id="produtos" role="tabpanel" aria-labelledby="produtos-tab">
             {produtos}
+            <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
           </div>
           <div className="tab-pane fade" id="prazos" role="tabpanel" aria-labelledby="prazos-tab">
             {prazos}
+            <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
           </div>
           <div className="tab-pane fade" id="envios" role="tabpanel" aria-labelledby="envios-tab">
             {envios}
+            <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
           </div>
           <div className="tab-pane fade" id="marca" role="tabpanel" aria-labelledby="marca-tab">
             {marca}
@@ -91,9 +98,7 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
           <div className="tab-pane fade" id="produto" role="tabpanel" aria-labelledby="produto-tab">
             {produto}
           </div>
-        </div>
-        <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
-      </form>
+        </div>    
     </div>
   );
 };

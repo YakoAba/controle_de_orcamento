@@ -1,4 +1,3 @@
-import { ChangeEvent } from "react";
 import ComboBoxTipoPessoa from "../comboboTipoPessoa";
 import CPFInput from "../inputCpf";
 import NomeInput from "../inputNome";
@@ -11,10 +10,9 @@ export default function AbaDados() {
             <DataInput/>
             <ValidadeInput/>
         </div>
-        <ComboBoxTipoPessoa/>
         <CPFInput />
         <NomeInput/>
+        <ComboBoxTipoPessoa/>
     </>
-
     );
 }
