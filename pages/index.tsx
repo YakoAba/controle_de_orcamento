@@ -10,9 +10,9 @@ import AbaCliente from '@/clientes/componentes/aba';
 
 export default function Home() {
   return (
-    <main className="bg-dark flex min-h-screen flex-col items-center justify-between p-1">
+    <main className="bg-gray-900 flex flex-col items-center justify-between p-1 w-full h-screen">
       <MyHead />
-      <FormularioOrcamento 
+      <FormularioOrcamento
         dados={<AbaDados />}
         prazos={<AbaPrazo />}
         produtos={<AbaProdutos />}
