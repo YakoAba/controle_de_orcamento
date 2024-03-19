@@ -1,5 +1,5 @@
-import ComboBoxTipoPessoa from "../comboboTipoPessoa";
-import CPFInput from "../inputCpf";
+import ComboBoxTipoPessoa from "../../clientes/componentes/comboboTipoPessoa";
+import CPFInput from "../../clientes/componentes/inputCpf";
 import NomeInput from "../inputNome";
 import DataInput from "../inputData";
 import ValidadeInput from "../inputValidade";

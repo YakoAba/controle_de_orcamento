@@ -1,18 +1,8 @@
 import MaskedInput from 'react-text-mask';
-import { useGlobalContext } from "@/context";
+import { InputProps } from '../interface';
+// import { useGlobalContext } from "@/context";
 
-const CPFInput: React.FC = () => {
-
-  const { jsonData, setData } = useGlobalContext();
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const cpf = event.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-    const isValid = validarCPF(cpf);
-    setData({
-      ...jsonData,
-      cpfcliente: event.target.value,
-    });
-  };
+function CPFInput({value, onChange}:InputProps) {
 
   const validarCPF = (cpf: string) => {
     if (!cpf || cpf.length !== 11) return false;
@@ -51,13 +41,12 @@ const CPFInput: React.FC = () => {
         name='cpfcliente'
         className="form-control bg-secondary text-white border border-secondary"
         guide={false} // Não mostra a máscara até que o usuário comece a digitar
-        placeholder="Digite o CPF"
-        value={jsonData.cpfcliente}
-        onChange={handleChange}
-      />
+        placeholder="Digite o CPF" 
+        onChange={onChange}
+        value={value} />
     </div>
   );
-};
+}
 
 export default CPFInput;
 

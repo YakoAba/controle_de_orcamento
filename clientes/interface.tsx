@@ -17,7 +17,7 @@ export type ClienteContextType = {
   addCliente: (novaCliente: Cliente) => Promise<void>;
 };
 
-export interface NomeInputProps {
+export interface InputProps {
   value: string; // Tipo para o valor do input
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void; // Função de callback para o evento de mudança
 }
@@ -33,3 +33,8 @@ export interface GridClientesProps {
 export type ClienteProviderProps = {
   children: ReactNode;
 };
+
+export interface ComboBoxTipoProps {
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+}
