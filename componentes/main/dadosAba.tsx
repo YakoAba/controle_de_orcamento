@@ -10,9 +10,9 @@ export default function AbaDados() {
             <DataInput/>
             <ValidadeInput/>
         </div>
-        <CPFInput />
+        {/* <CPFInput /> */}
         <NomeInput/>
-        <ComboBoxTipoPessoa/>
+        {/* <ComboBoxTipoPessoa/> */}
     </>
     );
 }
