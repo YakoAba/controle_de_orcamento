@@ -1,21 +1,6 @@
-import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
-import { getMarcas, addMarca as addMarcaAPI, updateMarca as updateMarcaAPI, deleteMarca as deleteMarcaAPI } from '../services/marcaService';
-
-// Definindo o tipo para a marca
-type Marca = {
-  id: number;
-  nome: string;
-};
-
-// Definindo o tipo para o contexto
-type MarcaContextType = {
-  marcas: Marca[];
-  marcaSelecionada: Marca | null;
-  selecionarMarca: (marca: Marca) => void;
-  addMarca: (novaMarca: Marca) => Promise<void>;
-  updateMarca: (marcaId: number, marcaAtualizada: Marca) => Promise<void>;
-  deleteMarca: (marcaId: number) => Promise<void>;
-};
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { getMarcas, addMarca as addMarcaAPI } from './services';
+import { Marca, MarcaContextType, MarcaProviderProps } from './interface';
 
 // Criando o contexto
 const MarcaContext = createContext<MarcaContextType | undefined>(undefined);
@@ -26,10 +11,6 @@ export const useMarcaContext = () => {
     throw new Error('useMarcaContext deve ser usado dentro de um MarcaProvider');
   }
   return context;
-};
-
-type MarcaProviderProps = {
-  children: ReactNode;
 };
 
 export const MarcaProvider = ({ children }: MarcaProviderProps) => {
@@ -52,34 +33,14 @@ export const MarcaProvider = ({ children }: MarcaProviderProps) => {
 
   const addMarca = async (novaMarca: Marca) => {
     try {
-      await addMarcaAPI(novaMarca);
+      const id = await addMarcaAPI(novaMarca);
+      console.log(id);
       await carregarMarcas(); // Recarrega a lista de marcas após a inserção
     } catch (error) {
       console.error('Erro ao adicionar marca:', error);
       // Tratar erro conforme necessário
     }
   };
-
-  const updateMarca = async (marcaId: number, marcaAtualizada: Marca) => {
-    try {
-      await updateMarcaAPI(marcaId, marcaAtualizada);
-      await carregarMarcas(); // Recarrega a lista de marcas após a atualização
-    } catch (error) {
-      console.error('Erro ao atualizar marca:', error);
-      // Tratar erro conforme necessário
-    }
-  };
-
-  const deleteMarca = async (marcaId: number) => {
-    try {
-      await deleteMarcaAPI(marcaId);
-      await carregarMarcas(); // Recarrega a lista de marcas após a exclusão
-    } catch (error) {
-      console.error('Erro ao excluir marca:', error);
-      // Tratar erro conforme necessário
-    }
-  };
-
   // Carrega as marcas ao iniciar o contexto
   useEffect(() => {
     carregarMarcas();
@@ -89,9 +50,7 @@ export const MarcaProvider = ({ children }: MarcaProviderProps) => {
     marcas,
     marcaSelecionada,
     selecionarMarca,
-    addMarca,
-    updateMarca,
-    deleteMarca,
+    addMarca
   };
 
   return <MarcaContext.Provider value={contextValue}>{children}</MarcaContext.Provider>;

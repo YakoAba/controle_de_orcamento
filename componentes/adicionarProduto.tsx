@@ -7,7 +7,15 @@ const AdicionarProduto: React.FC = () => {
   const { jsonData, setData } = useGlobalContext(); // Obtém dados globais e função para atualizá-los
   const [produtos, setProdutos] = useState<Produto[]>(jsonData.produtos); // Estado local para produtos
   const [showModal, setShowModal] = useState(false);
+  const [novoProduto, setNovoProduto] = useState<Produto>({
+    id:'',
+    marca:'',
+    quantidade: 0,
+    nome:'',
+    total:0,
+    valorUnitario:0,
 
+  }); 
 
   // Função para adicionar um novo produto
   const adicionarProduto = (event: React.FormEvent<HTMLButtonElement>) => {

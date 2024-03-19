@@ -2,7 +2,7 @@ import { getAllRecords, insertData } from "../db";
 
 // Função para realizar a inserção de dados
 export async function insertOne(data: any): Promise<void> {
-    const sql = `INSERT INTO produtos (id_marca, nome_produtos) VALUES (?,?)`;
+    const sql = `INSERT INTO produtos (id_marca, nome_produto) VALUES (?,?)`;
     const values = [data.id_marca, data.nome_produto || null];
 
     try {
