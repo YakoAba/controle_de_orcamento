@@ -1,6 +1,6 @@
 import MyHead from "@/componentes/head";
 import FormularioOrcamento from "@/componentes/formulario";
-import AbaDados from "@/componentes/main/dadosAba";
+import AbaDados from "@/orcamentos/componentes/dadosAba";
 import AbaPrazo from '@/componentes/main/prazoAba';
 import AbaProdutos from '@/componentes/main/produtosAba';
 import AbaEnvio from '@/componentes/main/envioAba';

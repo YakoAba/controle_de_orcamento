@@ -7,6 +7,7 @@ import ComboBoxTipoPessoa from "./comboboTipoPessoa";
 import GridClientes from "./grid";
 import { Cliente } from "../interface";
 
+
 export default function AbaCliente() {
     const { addCliente, clientes } = useClienteContext();
     const [nome_cliente, setNomeCliente] = useState<string>('');
@@ -57,7 +58,7 @@ export default function AbaCliente() {
             <NomeInput value={nome_cliente} onChange={handleChangeNomeCliente}/>
             <CPFInput value={cpf_cliente} onChange={handleChangeCpfCliente}/>
             <ComboBoxTipoPessoa value={tipo_cliente} onChange={handleChangeTipoCliente} />
-            <ClienteButton onClick={handleAddCliente} />
+            <ClienteButton onClick={handleAddCliente} /> 
             <GridClientes clientes={clientes} />
         </div>
     );

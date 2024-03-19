@@ -29,4 +29,5 @@ export interface ProdutoButtonProps {
 
 export interface GridProdutosProps {
   produtos: Produto[];
+  marcas: Marca[];
 }

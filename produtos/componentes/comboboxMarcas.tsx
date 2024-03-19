@@ -3,11 +3,10 @@ import React from 'react';
 interface MarcaInputProps {
   value: string; // Tipo para o valor do input
   marcas: any[]; // Tipo para o valor do input
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void; // Corrigido para usar ChangeEvent
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void; 
 }
 
 export default function ComboBoxMarcas({ value, marcas, onChange }: MarcaInputProps) {
-  console.log(marcas)
   return (
     <div className="form-group mt-2 mb-2">
       <label htmlFor='tipoCliente' className='text-white'>Marca do Produto:</label>

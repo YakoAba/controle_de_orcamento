@@ -27,7 +27,6 @@ export default function Aba() {
 
   const handleChangeNomeMarca = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNome_Marca(event.target.value);
-    console.log(nome_marca)
   };
 
   return (

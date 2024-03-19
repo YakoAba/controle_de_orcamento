@@ -33,8 +33,7 @@ export const MarcaProvider = ({ children }: MarcaProviderProps) => {
 
   const addMarca = async (novaMarca: Marca) => {
     try {
-      const id = await addMarcaAPI(novaMarca);
-      console.log(id);
+      const id = await addMarcaAPI(novaMarca);;
       await carregarMarcas(); // Recarrega a lista de marcas após a inserção
     } catch (error) {
       console.error('Erro ao adicionar marca:', error);

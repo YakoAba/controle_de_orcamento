@@ -27,7 +27,6 @@ export async function addClientes(novoCliente : Cliente){
         throw new Error('Erro ao adicionar cliente na API');
     }
     const data = await response.json();
-    console.log(data);
     return data.id;
 }
 

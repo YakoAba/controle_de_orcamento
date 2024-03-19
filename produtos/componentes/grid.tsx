@@ -1,7 +1,15 @@
 import React from 'react';
 import { GridProdutosProps } from '../interface';
+import { Marca } from '@/marcas/interface';
 
-const GridProdutos: React.FC<GridProdutosProps> = ({ produtos }) => {
+function buscarNomeMarcaPorId(id: string, marcas: Marca[]): string {
+    const selectedMarca = marcas.find(marca => marca.id === id);
+    if (selectedMarca)
+      return selectedMarca.nome_marca
+    else return ''
+}
+
+function GridProdutos({ produtos, marcas }: GridProdutosProps) {
   return (
     <div className="container mt-4">
       <legend style={{ fontSize: 'large', color: 'white' }}>Grid de Marcas</legend>
@@ -19,7 +27,7 @@ const GridProdutos: React.FC<GridProdutosProps> = ({ produtos }) => {
             <tr key={produto.id} style={{ backgroundColor: index % 2 === 0 ? '#f8f9fa' : '#e9ecef' }}>
               <td>{produto.id}</td>
               <td>{produto.nome_produto}</td>
-              <td>{produto.nome_marca}</td>
+              <td>{buscarNomeMarcaPorId(produto.id_marca, marcas)}</td>
               <td>{produto.data_cadastro}</td>
             </tr>
           ))}
@@ -27,6 +35,6 @@ const GridProdutos: React.FC<GridProdutosProps> = ({ produtos }) => {
       </table>
     </div>
   );
-};
+}
 
 export default GridProdutos;

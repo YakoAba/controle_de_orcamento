@@ -20,7 +20,6 @@ export default function AbaProduto() {
 
         try {
             const id = await addProduto({ nome_produto, id_marca, nome_marca, id: '', data_cadastro: '' });
-            console.log(id)
             setNome_Produto(''); // Limpa o campo de entrada após adicionar a produto
             alert('Produto adicionada com sucesso');
         } catch (error) {
@@ -31,19 +30,12 @@ export default function AbaProduto() {
 
     const handleChangeNomeProduto = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNome_Produto(event.target.value);
-        console.log(nome_produto)
     };
 
     const handleChangeMarca = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setId_Marca(event.target.value);
-        const selectedId = event.target.value;
-        const selectedMarca = marcas.find(marca => marca.id === selectedId);
-        console.log(selectedId);
-        if (selectedMarca) {
-          setNome_Marca(selectedMarca.nome_marca);
-          console.log(selectedMarca.nome_marca + '    ' + selectedId);
-        }
-    };
+      };
+      
 
     return (
         <div className="mt-3 mb-3 text-white">
@@ -51,7 +43,7 @@ export default function AbaProduto() {
             <ComboBoxProdutos value={id_marca} onChange={handleChangeMarca} marcas={marcas} />
             <ProdutoInput value={nome_produto} onChange={handleChangeNomeProduto} />
             <ProdutoButton onClick={handleAddProduto} />
-            <GridProdutos produtos={produtos} />
+            <GridProdutos produtos={produtos} marcas={marcas} />
         </div>
     );
 }

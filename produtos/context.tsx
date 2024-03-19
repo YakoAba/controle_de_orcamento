@@ -49,8 +49,7 @@ export const ProdutoProvider = ({ children }: ProdutoProviderProps) => {
 
   const addProduto = async (novaProduto: Produto) => {
     try {
-      const id = await addProdutoAPI(novaProduto);
-      console.log(id);
+      const id = await addProdutoAPI(novaProduto);;
       await carregarProdutos(); // Recarrega a lista de produtos após a inserção
     } catch (error) {
       console.error('Erro ao adicionar produto:', error);

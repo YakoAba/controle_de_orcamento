@@ -35,7 +35,6 @@ export async function addProdutos(novaProduto: { nome_produto: string; id_marca:
     throw new Error('Erro ao adicionar produto na API');
   }
   const data = await response.json();
-  console.log(data);
   return data.id;
 }
 
