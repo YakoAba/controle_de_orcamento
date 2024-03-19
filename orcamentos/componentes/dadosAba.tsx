@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import ComboBoxClientes from '../../componentes/comboboxClientes';
-import DataInput from '../../componentes/inputData';
-import ValidadeInput from '../../componentes/inputValidade';
+import DataInput from './inputData';
+import ValidadeInput from './inputValidade';
 
 export default function AbaDados() {
   const [data, setData] = useState('');
@@ -15,8 +15,8 @@ export default function AbaDados() {
   return (
     <>
       <div className="d-flex flex-row gap-5 pl-0 pr-0">
-        {/* <DataInput value={data} onChange={(event) => setData(event.target.value)} />
-        <ValidadeInput value={validade} onChange={(event) => setValidade(event.target.value)} /> */}
+        <DataInput value={data} onChange={(event) => setData(event.target.value)} />
+        <ValidadeInput value={validade} onChange={(event) => setValidade(event.target.value)} />
       </div>
       <ComboBoxClientes
         value={clienteSelecionado}
