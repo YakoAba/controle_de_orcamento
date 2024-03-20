@@ -50,8 +50,20 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
     <div className="container mt-1 p-1">
       <ul className="nav nav-tabs" id="myTab" role="tablist">
         <li className="nav-item" role="presentation">
+          <button className="nav-link" id="clientes-tab" data-bs-toggle="tab" data-bs-target="#clientes" type="button"
+            role="tab" aria-controls="clientes" aria-selected="false">Cadastro de Clientes:</button>
+        </li>
+        <li className="nav-item" role="presentation">
+          <button className="nav-link" id="marca-tab" data-bs-toggle="tab" data-bs-target="#marca" type="button"
+            role="tab" aria-controls="marca" aria-selected="false">Cadastro de Marcas</button>
+        </li>
+        <li className="nav-item" role="presentation">
+          <button className="nav-link" id="produto-tab" data-bs-toggle="tab" data-bs-target="#produto" type="button"
+            role="tab" aria-controls="produto" aria-selected="false">Cadastro Produtos</button>
+        </li>
+        <li className="nav-item" role="presentation">
           <button className="nav-link active" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados"
-            type="button" role="tab" aria-controls="dados" aria-selected="true">Dados</button>
+            type="button" role="tab" aria-controls="dados" aria-selected="true">Orçamentos</button>
         </li>
         <li className="nav-item" role="presentation">
           <button className="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos"
@@ -64,18 +76,6 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
         <li className="nav-item" role="presentation">
           <button className="nav-link" id="envios-tab" data-bs-toggle="tab" data-bs-target="#envios" type="button"
             role="tab" aria-controls="envios" aria-selected="false">Envios</button>
-        </li>
-        <li className="nav-item" role="presentation">
-          <button className="nav-link" id="clientes-tab" data-bs-toggle="tab" data-bs-target="#clientes" type="button"
-            role="tab" aria-controls="clientes" aria-selected="false">Cadastro de Clientes:</button>
-        </li>
-        <li className="nav-item" role="presentation">
-          <button className="nav-link" id="marca-tab" data-bs-toggle="tab" data-bs-target="#marca" type="button"
-            role="tab" aria-controls="marca" aria-selected="false">Cadastro de Marcas</button>
-        </li>
-        <li className="nav-item" role="presentation">
-          <button className="nav-link" id="produto-tab" data-bs-toggle="tab" data-bs-target="#produto" type="button"
-            role="tab" aria-controls="produto" aria-selected="false">Cadastro Produtos</button>
         </li>
       </ul>
       <div className="tab-content" id="myTabContent">
