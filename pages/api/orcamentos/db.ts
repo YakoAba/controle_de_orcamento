@@ -2,28 +2,29 @@ import { getAllRecords, insertData } from "../db";
 
 // Função para realizar a inserção de dados
 export async function insertOne(data: any): Promise<void> {
-    const sql = `
-        INSERT INTO orcamentos (
-            data_orcamento, validade_orcamento, nome_cliente, cpf_cliente,
-            tipo_cliente, forma_envio, uf_envio, cep_envio, valor_frete,
-            forma_pagamento, prazo_fabricacao, prazo_entrega, observacao
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
-    
+
+    // const sql = 
+    // `
+    //     INSERT INTO orcamentos (
+    //         data_orcamento, validade_orcamento, nome_cliente, cpf_cliente,
+    //         tipo_cliente, forma_envio, uf_envio, cep_envio, valor_frete,
+    //         forma_pagamento, prazo_fabricacao, prazo_entrega, observacao
+    //     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    // `;
+    const sql =`INSERT INTO orcamentos (
+                 data, validade, cliente_id ) VALUES (?, ?, ?)`;
     const values = [
-        data.dataOrcamento || null,
-        data.validadeOrcamento || null,
-        data.nomeCliente || null,
-        data.cpfCliente.replace(/\D+/g, '') || null,
-        data.tipoCliente || null,
-        data.formaEnvio || null,
-        data.ufEnvio || null,
-        data.cepEnvio.replace(/\D+/g, '') || null,
-        data.valorFrete || null,
-        data.formaPagamento || null,
-        data.prazoFabricacao || null,
-        data.prazoEntrega || null,
-        data.observacao || null,
+        data.data || null,
+        data.validade || null,
+        data.cliente_id || null,
+        // data.formaEnvio || null,
+        // data.ufEnvio || null,
+        // data.cepEnvio.replace(/\D+/g, '') || null,
+        // data.valorFrete || null,
+        // data.formaPagamento || null,
+        // data.prazoFabricacao || null,
+        // data.prazoEntrega || null,
+        // data.observacao || null,
     ];
 
     try {

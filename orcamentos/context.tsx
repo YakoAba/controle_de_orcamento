@@ -1,3 +1,4 @@
+//context.tsx
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { getOrcamentos, addOrcamento as addOrcamentoAPI } from './services';
 import { Orcamento, OrcamentoContextType, OrcamentoProviderProps } from './interface';
@@ -15,7 +16,12 @@ export const useOrcamentoContext = () => {
 
 export const OrcamentoProvider = ({ children }: OrcamentoProviderProps) => {
   const [orcamentos, setOrcamentos] = useState<Orcamento[]>([]);
-  const [orcamentoSelecionada, setOrcamentoSelecionada] = useState<Orcamento | null>(null);
+  const [orcamentoSelecionada, setOrcamentoSelecionada] = useState<Orcamento>({
+    id:'',
+    cliente_id:'',
+    data : '',
+    validade : ''
+  });
 
   const carregarOrcamentos = async () => {
     try {

@@ -7,11 +7,13 @@ import AbaEnvio from '@/componentes/main/envioAba';
 import AbaProduto from '@/produtos/componentes/aba';
 import AbaMarca from '@/marcas/componentes/aba';
 import AbaCliente from '@/clientes/componentes/aba';
+import { OrcamentoProvider } from "@/orcamentos/context";
 
 export default function Home() {
   return (
     <main className="bg-gray-900 flex flex-col items-center justify-between p-1 w-full h-screen">
       <MyHead />
+      <OrcamentoProvider>
       <FormularioOrcamento
         dados={<AbaDados />}
         prazos={<AbaPrazo />}
@@ -21,6 +23,7 @@ export default function Home() {
         marca={<AbaMarca />}
         cliente={<AbaCliente />}
       />
+      </OrcamentoProvider>
     </main>
   );
 };

@@ -1,3 +1,5 @@
+import { Orcamento } from "./interface";
+
 const API_URL = 'api/orcamentos'; // Altere para a URL correta da sua API
 
 // Função para obter todas as orcamentos
@@ -11,13 +13,13 @@ export async function getOrcamentos() {
 }
 
 // Função para adicionar uma nova orcamento
-export async function addOrcamento(novaOrcamento: { nome_orcamento: string; }) {
+export async function addOrcamento(novaOrcamento: Orcamento) {
   const response = await fetch(API_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ 'nome_orcamento': novaOrcamento.nome_orcamento }),
+    body: JSON.stringify(novaOrcamento),
   });
   if (!response.ok) {
     throw new Error('Erro ao adicionar orcamento na API');

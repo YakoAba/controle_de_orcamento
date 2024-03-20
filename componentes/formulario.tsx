@@ -1,12 +1,12 @@
 //formulario.tsx
 
-import { useGlobalContext } from "@/context";
 import { MarcaProvider } from "@/marcas/context";
 import { ProdutoProvider } from "@/produtos/context";
-import { ClienteProvider } from "@/clientes/context";
+import { ClienteProvider } from "@/clientes/context"
+import { useOrcamentoContext } from "@/orcamentos/context";
 
 export default function FormularioOrcamento({ dados, produtos, prazos, envios, marca, produto, cliente }: any) {
-  const { jsonData } = useGlobalContext();
+  const { orcamentoSelecionada } = useOrcamentoContext();
 
   function abrirNovaAbaComJson(json: string) {
     // Cria a URL com o JSON como parâmetro
@@ -17,14 +17,15 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
   }
 
   function enviarDadosParaNodeJS() {
+    console.log(orcamentoSelecionada)
     // console.log("Enviando dados para o Node.js:", json);
-    fetch("/api/orcamento", {
+    fetch("/api/orcamentos", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept-Encoding": "gzip, compress, br",
       },
-      body: JSON.stringify(jsonData),
+      body: JSON.stringify(orcamentoSelecionada),
     })
       .then((response) => {
         if (!response.ok) {
@@ -38,7 +39,7 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
           data.mensagens.forEach((msg: { erro: any; }) => {
             // console.log(msg.mensagem);
             if (msg.erro) console.error(msg.erro);
-            else abrirNovaAbaComJson(JSON.stringify(jsonData));
+            else abrirNovaAbaComJson(JSON.stringify({}));
           });
         }
       })

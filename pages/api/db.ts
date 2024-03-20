@@ -78,11 +78,10 @@ export class DatabaseSingleton implements IDatabaseSingleton {
             await this.dbInstance.exec(`
                 CREATE TABLE IF NOT EXISTS orcamentos (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    produto_id INTEGER NOT NULL,
-                    marca_id INTEGER NOT NULL,
-                    quantidade INTEGER NOT NULL,
-                    FOREIGN KEY (produto_id) REFERENCES produtos (id),
-                    FOREIGN KEY (marca_id) REFERENCES marcas (id)
+                    cliente_id INTEGER NOT NULL,
+                    data Date,
+                    validade Date,
+                    FOREIGN KEY (cliente_id) REFERENCES clientes (id)
                 );
             `);
 

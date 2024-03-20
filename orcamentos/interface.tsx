@@ -1,17 +1,18 @@
+//interface.tsx
 import { ReactNode } from "react";
 
 // Definindo o tipo para a orcamento
 export type Orcamento = {
   id: string;
-  id_cliente : string;
-  nome_orcamento: string;
-  data_cadastro : string;
+  cliente_id: string;
+  data: string;
+  validade: string;
 };
 
 // Definindo o tipo para o contexto
 export type OrcamentoContextType = {
   orcamentos: Orcamento[];
-  orcamentoSelecionada: Orcamento | null;
+  orcamentoSelecionada: Orcamento;
   selecionarOrcamento: (orcamento: Orcamento) => void;
   addOrcamento: (novaOrcamento: Orcamento) => Promise<void>;
 };
