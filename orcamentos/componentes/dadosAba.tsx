@@ -1,22 +1,22 @@
 import { ChangeEvent } from 'react';
-import ComboBoxClientes from '../../componentes/comboboxClientes';
+import ComboBoxClientes from './comboboxClientes';
 import DataInput from './inputData';
 import ValidadeInput from './inputValidade';
 import { useOrcamentoContext } from '../context';
 
 export default function AbaDados() {
-  const { orcamentoSelecionada, selecionarOrcamento} = useOrcamentoContext();
- 
+  const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext();
+
   const handleClienteChange = (event: ChangeEvent<HTMLSelectElement>): void => {
-    selecionarOrcamento({...orcamentoSelecionada,cliente_id : event.target.value})
+    selecionarOrcamento({ ...orcamentoSelecionada, cliente_id: event.target.value })
   };
 
   const handleDataChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    selecionarOrcamento({...orcamentoSelecionada,data : event.target.value})
+    selecionarOrcamento({ ...orcamentoSelecionada, data: event.target.value })
   };
 
   const handleValidadeChange = (event: ChangeEvent<HTMLInputElement>): void => {
-    selecionarOrcamento({...orcamentoSelecionada,validade : event.target.value})
+    selecionarOrcamento({ ...orcamentoSelecionada, validade: event.target.value })
   };
 
   return (
