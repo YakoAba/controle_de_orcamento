@@ -27,7 +27,7 @@ export default function PrazoFabricacao() {
         checked={mostrarInput}
         style={{ marginRight: '10px' }} // Adiciona um espaçamento à direita do checkbox
       />
-      <label htmlFor="prazoFabricacaoCheck">Prazo de fabricação</label>
+      <label style={{ fontSize: 'large', color: 'white' }} htmlFor="prazoFabricacaoCheck">Prazo de fabricação</label>
       {/* Renderiza o input apenas se o estado de visibilidade for true */}
       {mostrarInput && (
         <input

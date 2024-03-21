@@ -1,12 +1,8 @@
 import AdicionarProduto from "../adicionarProduto";
-import FileFichaTecnica from "../fileFichaTecnica";
-import FichaTecnicaTexto from "../textareaFichaTecnica";
 
 export default function AbaProdutos() {
-  return (<>
-    <FichaTecnicaTexto />
-    <FileFichaTecnica />
+  return (<div className="border border-secondary rounded-3 p-3">
     <AdicionarProduto />
-    </>
+  </div>
   );
 }

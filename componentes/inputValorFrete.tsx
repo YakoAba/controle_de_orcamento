@@ -13,7 +13,7 @@ export default function ValorFreteInput() {
     };
     
     return (
-        <div className="form-group mt-2 mb-2">
+        <div className="form-group mt-2 mb-2 text-white">
             <label htmlFor="valorFrete">Valor do Frete:</label>
             <input type="number" id="valorFrete" step="0.01" value={jsonData.valorFrete} onChange={handleChange}
                 className="form-control bg-secondary text-white border-secondary " name="valorfrete" />

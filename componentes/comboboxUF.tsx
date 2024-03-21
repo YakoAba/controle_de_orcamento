@@ -11,7 +11,7 @@ export default function ComboBoxUF() {
     };
     return (
         <div className="form-group mt-2 mb-2">
-            <label htmlFor={'ufEnvio'}>UF:</label>
+            <label className='text-white' htmlFor={'ufEnvio'}>UF:</label>
             <select
                 id={'ufEnvio'}
                 className="form-select bg-secondary text-white border-secondary"

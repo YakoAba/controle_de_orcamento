@@ -19,7 +19,7 @@ export default function PrazoEntrega() {
   return (
     <div className="form-group mt-2 mb-2">
       <input type="checkbox" id="prazoEntregaCheck"  onChange={handleCheckboxChange} style={{ marginRight: '10px' }} /> 
-      <label htmlFor="prazoEntregaCheck">Prazo de entrega</label>
+      <label style={{ fontSize: 'large', color: 'white' }} htmlFor="prazoEntregaCheck">Prazo de entrega</label>
       {mostrarInput && (<input
         autoComplete="off" // Apenas uma vez
         type="text"

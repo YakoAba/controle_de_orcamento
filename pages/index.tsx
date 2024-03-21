@@ -11,14 +11,12 @@ import { OrcamentoProvider } from "@/orcamentos/context";
 
 export default function Home() {
   return (
-    <main className="bg-gray-900 flex flex-col items-center justify-between p-1 w-full h-screen">
+    <main className="flex flex-col items-center justify-between p-1 w-full h-screen">
       <MyHead />
       <OrcamentoProvider>
       <FormularioOrcamento
         dados={<AbaDados />}
-        prazos={<AbaPrazo />}
         produtos={<AbaProdutos />}
-        envios={<AbaEnvio />}
         produto={<AbaProduto />}
         marca={<AbaMarca />}
         cliente={<AbaCliente />}

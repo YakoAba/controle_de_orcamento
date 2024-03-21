@@ -70,9 +70,9 @@ export default function ProdutoOrcamentoModal({ show, onAdicionar, onClose }:Pro
                 }
             />
         </Form.Group>
-        {/* <Button variant="primary" className="btn btn-primary mt-3 mx-1" onClick={adicionarProduto}>
+        <Button variant="primary" className="btn btn-primary mt-3 mx-1" onClick={onAdicionar}>
             Adicionar
-        </Button> */}
+        </Button>
         <Button variant="secondary" className="btn btn-primary mt-3 mx-1" onClick={onClose}>
             Fechar
         </Button>

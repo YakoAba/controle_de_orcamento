@@ -26,7 +26,7 @@ export default function Observacao() {
         onChange={handleCheckboxChange}
         style={{ marginRight: '10px' }} // Adiciona um espaçamento à direita do checkbox
       />
-      <label htmlFor="observacaoCheck">Observação</label>
+      <label style={{ fontSize: 'large', color: 'white' }} htmlFor="observacaoCheck">Observação</label>
 
       {mostrarInput && (<textarea
         id="observacao"

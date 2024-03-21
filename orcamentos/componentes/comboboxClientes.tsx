@@ -53,10 +53,10 @@ function ComboBoxClientes({ value, onChange }: ComboBoxClientesProps) {
         ))}
       </select>
       <div className='text-white mt-2'>
-        CPF do cliente selecionado: {cpf}
+        CPF do cliente: {cpf}
       </div>
       <div className='text-white mt-1'>
-        Tipo do cliente selecionado: {tipo == '' ? '' : tipo === 'pf' ? 'Pessoa Fisica' : 'Pessoa Juridica'}
+        Tipo do cliente: {tipo == '' ? '' : tipo === 'pf' ? 'Pessoa Fisica' : 'Pessoa Juridica'}
       </div>
     </div>
   );

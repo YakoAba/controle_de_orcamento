@@ -5,7 +5,7 @@ import { ProdutoProvider } from "@/produtos/context";
 import { ClienteProvider } from "@/clientes/context"
 import { useOrcamentoContext } from "@/orcamentos/context";
 
-export default function FormularioOrcamento({ dados, produtos, prazos, envios, marca, produto, cliente }: any) {
+export default function FormularioOrcamento({ dados, produtos, marca, produto, cliente }: any) {
   const { orcamentoSelecionada } = useOrcamentoContext();
 
   function abrirNovaAbaComJson(json: string) {
@@ -65,18 +65,18 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
           <button className="nav-link active" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados"
             type="button" role="tab" aria-controls="dados" aria-selected="true">Orçamentos</button>
         </li>
-        <li className="nav-item" role="presentation">
+        {/* <li className="nav-item" role="presentation">
           <button className="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos"
             type="button" role="tab" aria-controls="produtos" aria-selected="false">Produtos</button>
-        </li>
+        </li> */}
         <li className="nav-item" role="presentation">
-          <button className="nav-link" id="prazos-tab" data-bs-toggle="tab" data-bs-target="#prazos" type="button"
-            role="tab" aria-controls="prazos" aria-selected="false">Prazos</button>
+          <button className="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos" type="button"
+            role="tab" aria-controls="produtos" aria-selected="false">Produtos</button>
         </li>
-        <li className="nav-item" role="presentation">
+        {/* <li className="nav-item" role="presentation">
           <button className="nav-link" id="envios-tab" data-bs-toggle="tab" data-bs-target="#envios" type="button"
             role="tab" aria-controls="envios" aria-selected="false">Envios</button>
-        </li>
+        </li> */}
       </ul>
       <div className="tab-content" id="myTabContent">
         <div className="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
@@ -85,14 +85,6 @@ export default function FormularioOrcamento({ dados, produtos, prazos, envios, m
         </div>
         <div className="tab-pane fade" id="produtos" role="tabpanel" aria-labelledby="produtos-tab">
           {produtos}
-          <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
-        </div>
-        <div className="tab-pane fade" id="prazos" role="tabpanel" aria-labelledby="prazos-tab">
-          {prazos}
-          <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
-        </div>
-        <div className="tab-pane fade" id="envios" role="tabpanel" aria-labelledby="envios-tab">
-          {envios}
           <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
         </div>
         <div className="tab-pane fade" id="marca" role="tabpanel" aria-labelledby="marca-tab">
