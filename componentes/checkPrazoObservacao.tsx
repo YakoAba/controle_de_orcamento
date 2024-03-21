@@ -30,7 +30,7 @@ export default function Observacao() {
 
       {mostrarInput && (<textarea
         id="observacao"
-        className="form-control bg-secondary border-secondary rounded mt-2 mb-2"
+        className="form-control bg-secondary border-secondary rounded mt-2 mb-2 "
         name="observacaoprazo"
         value={jsonData.observacao}
         onChange={handleChange}

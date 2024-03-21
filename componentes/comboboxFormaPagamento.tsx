@@ -11,7 +11,7 @@ export default function ComboBoxFormaPagamento() {
     };
 
     return (
-        <div className="text-white form-group ">
+        <div className="text-white form-group m-2">
             <label htmlFor='formaPagamento' className='text-white'>Forma de Pagamento:</label>
             <select
                 id='formaPagamento'

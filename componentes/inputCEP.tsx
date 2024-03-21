@@ -17,8 +17,8 @@ export default function CEPInput(){
   };
 
   return (
-    <div className="form-group mt-2 mb-2">
-      <label htmlFor={'cepEnvio'} className="text-white w-50">{'CEP'}</label>
+    <div className="form-group m-2">
+      <label htmlFor={'cepEnvio'} className="text-white">{'CEP'}</label>
       <MaskedInput
         mask={[/\d/, /\d/, '.', /\d/, /\d/, /\d/,  '-', /\d/, /\d/, /\d/]}
         id='cepEnvio'

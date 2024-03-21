@@ -41,7 +41,7 @@ export default function AbaDados() {
         />
       </div>
       <div className="border border-secondary rounded-3 p-3">
-        <div className="d-flex flex-row gap-5 pl-0 pr-0">
+        <div className="d-flex flex-row ">
           <ComboBoxFormaEnvio />
           <CEPInput />
           <ComboBoxUF />
@@ -49,13 +49,13 @@ export default function AbaDados() {
           <ComboBoxFormaPagamento />
         </div>
       </div>
-      <div className="border border-secondary rounded-3 p-3">
+      <div className="border border-secondary p-3">
         <legend style={{ fontSize: 'large', color: 'white' }}>Prazos</legend>
         <div className="d-flex flex-row gap-3 pl-0 pr-0">
-        <PrazoFabricacao />
-        <PrazoEntrega />
-        <Observacao />
+          <PrazoFabricacao />
+          <PrazoEntrega />
         </div>
+        <Observacao />
       </div>
     </>
   );

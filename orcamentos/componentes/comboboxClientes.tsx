@@ -35,7 +35,7 @@ function ComboBoxClientes({ value, onChange }: ComboBoxClientesProps) {
       setTipo('');
       setCpf(''); // Caso não encontre o cliente, limpa o CPF
     }
-    onChange(event); // Chama a função onChange passada como prop
+     onChange(event); // Chama a função onChange passada como prop
   };
 
   return (
@@ -48,15 +48,15 @@ function ComboBoxClientes({ value, onChange }: ComboBoxClientesProps) {
         value={value}
         onChange={handleClienteChange}>
         <option value="">Selecione</option>
-        {clientes.map((cliente) => (
+        {clientes?.map((cliente) => (
           <option key={cliente.id} value={cliente.id}>{cliente.nome_cliente}</option>
         ))}
       </select>
-      <div className='text-white mt-2'>
-        CPF do cliente: {cpf}
+      <div className='text-white'>
+        CPF do cliente selecionado: {cpf}
       </div>
-      <div className='text-white mt-1'>
-        Tipo do cliente: {tipo == '' ? '' : tipo === 'pf' ? 'Pessoa Fisica' : 'Pessoa Juridica'}
+      <div className='text-white'>
+        Tipo do cliente selecionado: {tipo==='pf'?'Pessoa Fisica':'Pessoa Juridica'}
       </div>
     </div>
   );

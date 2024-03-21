@@ -68,7 +68,7 @@ const AdicionarProduto: React.FC = () => {
             <th style={{ width: '23%', color:'white'  }}>Marca:</th>
             <th style={{ width: '12%', color:'white' }}>Quantidade:</th>
             <th style={{ width: '12%', color:'white'  }}>Valor Unitário:</th>
-            <th style={{ width: '12%', color:'white'  }}>Total:</th>
+            <th style={{ width: '15%', color:'white'  }}>Total:</th>
             <th style={{ width: '3%', color:'white'  }}></th>
           </tr>
         </thead>

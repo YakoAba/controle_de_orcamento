@@ -119,32 +119,32 @@ export async function insertData(sql: string, values: any[]): Promise<number> {
 export async function getAllRecords(tableName: string): Promise<any> {
     const dbSingleton = await DatabaseSingleton.getInstance();
     const dbInstance = await dbSingleton.getDatabaseInstance();
-    if (!dbInstance) {
-        throw new Error('Database is not connected');
-    }
-    try {
-        const sql = `SELECT * FROM ${tableName}`;
-        const result = await dbInstance.all(sql);
-        return result // Retorna um objeto com a chave sendo o nome da tabela
-    } catch (error) {
-        console.error('Erro ao buscar registros:', error);
-        throw new Error('Falha ao buscar registros no banco de dados');
-    }
-}
-
-export async function getRecordById(tableName: string, id: number): Promise<any | null> {
-    const dbSingleton = await DatabaseSingleton.getInstance();
-    const dbInstance = await dbSingleton.getDatabaseInstance();
-    if (!dbInstance) {
-        throw new Error('Database is not connected');
-    }
-
-    try {
-        const sql = `SELECT * FROM ${tableName} WHERE id = ?`;
-        const result = await dbInstance.get(sql, [id]);
-        return result ? result : null;
-    } catch (error) {
-        console.error('Erro ao buscar registro:', error);
-        throw new Error('Falha ao buscar registro no banco de dados');
+    if (dbInstance) {
+        // throw new Error('Database is not connected');
+        // } else
+        try {
+            const sql = `SELECT * FROM ${tableName}`;
+            const result = await dbInstance.all(sql);
+            return result // Retorna um objeto com a chave sendo o nome da tabela
+        } catch (error) {
+            console.error('Erro ao buscar registros:', error);
+            throw new Error('Falha ao buscar registros no banco de dados');
+        }
     }
 }
+    export async function getRecordById(tableName: string, id: number): Promise<any | null> {
+        const dbSingleton = await DatabaseSingleton.getInstance();
+        const dbInstance = await dbSingleton.getDatabaseInstance();
+        if (!dbInstance) {
+            throw new Error('Database is not connected');
+        }
+
+        try {
+            const sql = `SELECT * FROM ${tableName} WHERE id = ?`;
+            const result = await dbInstance.get(sql, [id]);
+            return result ? result : null;
+        } catch (error) {
+            console.error('Erro ao buscar registro:', error);
+            throw new Error('Falha ao buscar registro no banco de dados');
+        }
+    }

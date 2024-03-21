@@ -22,7 +22,7 @@ export async function getMarcas(): Promise<any> {
         return marcas;
     } catch (error) {
         console.error('Erro ao buscar marcas:', error);
-        throw new Error('Falha ao buscar marcas no banco de dados');
+       // throw new Error('Falha ao buscar marcas no banco de dados');
     }
 }
 

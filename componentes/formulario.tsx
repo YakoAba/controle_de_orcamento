@@ -65,23 +65,15 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
           <button className="nav-link active" id="dados-tab" data-bs-toggle="tab" data-bs-target="#dados"
             type="button" role="tab" aria-controls="dados" aria-selected="true">Orçamentos</button>
         </li>
-        {/* <li className="nav-item" role="presentation">
-          <button className="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos"
-            type="button" role="tab" aria-controls="produtos" aria-selected="false">Produtos</button>
-        </li> */}
         <li className="nav-item" role="presentation">
           <button className="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos" type="button"
             role="tab" aria-controls="produtos" aria-selected="false">Produtos</button>
         </li>
-        {/* <li className="nav-item" role="presentation">
-          <button className="nav-link" id="envios-tab" data-bs-toggle="tab" data-bs-target="#envios" type="button"
-            role="tab" aria-controls="envios" aria-selected="false">Envios</button>
-        </li> */}
       </ul>
       <div className="tab-content" id="myTabContent">
         <div className="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
           {dados}
-          <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
+          {/* <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button> */}
         </div>
         <div className="tab-pane fade" id="produtos" role="tabpanel" aria-labelledby="produtos-tab">
           {produtos}

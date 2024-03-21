@@ -23,7 +23,7 @@ function GridProdutos({ produtos, marcas }: GridProdutosProps) {
           </tr>
         </thead>
         <tbody>
-          {produtos.map((produto, index) => (
+          {produtos?.map((produto, index) => (
             <tr key={produto.id} style={{ backgroundColor: index % 2 === 0 ? '#f8f9fa' : '#e9ecef' }}>
               <td>{produto.id}</td>
               <td>{produto.nome_produto}</td>
