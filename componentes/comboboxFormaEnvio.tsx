@@ -1,13 +1,11 @@
-import { useGlobalContext } from "@/context";
 
+import { useOrcamentoContext } from '../orcamentos/context';
 export default function ComboBoxFormaEnvio() {
-    const { jsonData, setData } = useGlobalContext();
+    const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext()
+  
 
     const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setData({
-            ...jsonData,
-            formaEnvio: event.target.value,
-        });
+        selecionarOrcamento({...orcamentoSelecionada, forma_envio: event.target.value})
     };
 
     return (
@@ -17,7 +15,7 @@ export default function ComboBoxFormaEnvio() {
                 id='formaEnvio'
                 className="form-select bg-secondary text-white border-secondary"
                 name='formaEnvio'
-                value={jsonData.formaEnvio}
+                value={orcamentoSelecionada.forma_envio}
                 onChange={handleChange}>
                 <option value="">Selecione</option>
                 <option value="Transportadora">Transportadora</option>

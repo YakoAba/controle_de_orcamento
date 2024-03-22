@@ -17,12 +17,14 @@ export const useOrcamentoContext = () => {
 export const OrcamentoProvider = ({ children }: OrcamentoProviderProps) => {
   const [orcamentos, setOrcamentos] = useState<Orcamento[]>([]);
   const [orcamentoSelecionada, setOrcamentoSelecionada] = useState<Orcamento>({
-    id:'',
-    cliente_id:'',
-    data : '',
-    validade : '',
-    nome:'',
-    documento: ''
+    id: '',
+    cliente_id: '',
+    data: '',
+    validade: '',
+    nome: '',
+    documento: '',
+    forma_envio: '',
+    Cep:""
   });
 
   const carregarOrcamentos = async () => {

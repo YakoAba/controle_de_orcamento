@@ -17,6 +17,18 @@ function formatarDataBrasil(data: string) {
 
   return `${dia}/${mes}/${ano}`;
 }
+
+function formatarMoedaBrasil(valor: string) {
+  const valorNumerico = parseFloat(valor); // Certifique-se de que o valor seja numérico
+  if (isNaN(valorNumerico)) {
+    throw new Error('Valor inválido para formatação de moeda.');
+  }
+
+  return valorNumerico.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  });
+}
 export default function RelatorioOrcamento() {
   const router = useRouter();
   const [orcamento, setOrcamento] = useState<Orcamento | null>(null);
@@ -63,7 +75,7 @@ export default function RelatorioOrcamento() {
                 <h1>Termos do Orçamento</h1>
                 <p className="paragrafo" />
                 <p className="paragrafo"><br /></p>
-                <PrazosTable prazoEntrega={""} envio={""} cep={""} ufEnvio={""} frete={""} formaPagamento={""} agencia={""} conta={""} banco={""} total={""} />
+                <PrazosTable prazoEntrega={""} envio={orcamento?.forma_envio} cep={orcamento?.Cep}  ufEnvio={""} frete={""} formaPagamento={""} agencia={""} conta={""} banco={""} total={""} />
                 <Rodape />
             </div>
         </div>

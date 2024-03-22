@@ -2,7 +2,7 @@ import ComboBoxClientes from './comboboxClientes';
 import DataInput from './inputData';
 import ValidadeInput from './inputValidade';
 import ComboBoxFormaEnvio from '@/componentes/comboboxFormaEnvio';
-import CEPInput from '@/componentes/inputCEP';
+import CEPInput from '@/orcamentos/componentes/inputCEP';
 import ComboBoxUF from '@/componentes/comboboxUF';
 import ValorFreteInput from '@/componentes/inputValorFrete';
 import ComboBoxFormaPagamento from '@/componentes/comboboxFormaPagamento';

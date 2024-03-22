@@ -24,6 +24,7 @@ function PrazosTable({
   banco,
   total,
 }: PrazosTableProps): React.ReactElement {
+
   return (
     <table style={{ borderCollapse: 'collapse', marginLeft: '5.56pt' }}>
       <tbody>
@@ -47,7 +48,7 @@ function PrazosTable({
         <tr style={{ height: '25pt' }}></tr>
         <tr style={{}}>
           <td style={{ width: '165pt', borderTopStyle: 'solid', borderTopWidth: '1pt' }}>
-            <p className="s4" style={{ paddingLeft: '1pt', textAlign: 'left' }}>Forma de envio</p>
+            <p className="s4" style={{ paddingLeft: '1pt', textAlign: 'left' }}>Forma de envio:</p>
           </td>
           <td style={{ width: '130pt', borderTopStyle: 'solid', borderTopWidth: '1pt' }}></td>
           <td style={{ width: '65pt', borderTopStyle: 'solid', borderTopWidth: '1pt' }}></td>

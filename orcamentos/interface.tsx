@@ -9,6 +9,8 @@ export type Orcamento = {
   validade: string;
   nome:string;
   documento:string;
+  forma_envio:string;
+  Cep:string
 };
 
 // Definindo o tipo para o contexto
