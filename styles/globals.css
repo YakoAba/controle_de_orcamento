@@ -2,32 +2,257 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-} */
 
-@media (prefers-color-scheme: dark) {
-  /* :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  } */
+.cabecario {
+  display: flex;
+  /* Define como flex container */
+  justify-content: space-between;
+  /* Alinha elementos horizontalmente */
+  align-items: center;
+  /* Alinha elementos verticalmente */
 }
 
-body {
-  /* color: rgb(var(--foreground-rgb)); */
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
+
+
+h1,
+h2 {
+  background-color: #def8f4;
+  /* Cor de fundo cinza claro */
+  width: 100%;
+  /* Largura de 100% */
+  text-align: center;
+  /* Alinhamento do texto ao centro */
 }
+
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+.data {
+  padding-top: 0pt;
+  padding-left: 7pt;
+  text-indent: 0pt;
+  text-align: left;
+}
+
+p {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 10pt;
+  margin: 0pt;
+}
+
+.s1 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 12pt;
+}
+
+h3 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 12pt;
+}
+
+h2 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14pt;
+}
+
+.s2 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 11pt;
+}
+
+.s3 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 11pt;
+}
+
+h1 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16pt;
+}
+
+.s4 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: underline;
+  font-size: 12pt;
+}
+
+.s5 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 12pt;
+}
+
+.s6 {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 12pt;
+}
+
+.s7 {
+  color: black;
+  font-family: Verdana, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14pt;
+}
+
+.s8 {
+  color: #0F949C;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 9pt;
+}
+
+a {
+  color: black;
+  font-family: Calibri, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 12pt;
+}
+
+.s9 {
+  color: black;
+  font-family: "Times New Roman", serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 10pt;
+}
+
+.s10 {
+  color: black;
+  font-family: Calibri, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: 12pt;
+}
+
+.nome {
+  padding-top: 2pt;
+  padding-left: 12pt;
+  text-indent: 0pt;
+  text-align: left;
+}
+
+table, tbody {
+  vertical-align: top;
+  overflow: visible;
+}
+.produtos{
+padding-top: 2pt;
+padding-left: 7pt;
+text-indent: 0pt;
+text-align: left;
+}
+
+.paragrafo{
+  text-indent: 0pt; text-align: left
+}
+
+.containerRelatorio {
+  width: 100%; /* Ajuste a largura conforme necessário */
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.containerRel {
+  height: inherit;
+  border: 1px solid #cccccc;
+  text-align: center;
+  background-color: #ffffff;
+  /* Cor de fundo para o container */
+  border-radius: 10px;
+  /* Borda arredondada */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+  padding: 20px;
+  /* Espaçamento interno */
+}
+
+
+/* PrazosTable.module.css */
+
+.tableContainer {
+  border-collapse: collapse;
+  margin-left: 5.56pt;
+}
+
+.tableContainer td {
+  border-top-style: solid;
+  border-top-width: 1pt;
+}
+
+.prazosHeader {
+  width: 526pt;
+  border-bottom-style: solid;
+  border-bottom-width: 1pt;
+}
+
+.formaEnvioRow td {
+  width: 165pt;
+  border-bottom-style: solid;
+  border-bottom-width: 1pt;
+}
+
+.pagamentoRow td {
+  width: 165pt;
+  border-top-style: solid;
+  border-top-width: 1pt;
+}
+
+.totalRow td {
+  width: 295pt;
+  border-bottom-style: solid;
+  border-bottom-width: 1pt;
 }

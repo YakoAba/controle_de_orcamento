@@ -12,6 +12,15 @@ export async function getOrcamentos() {
   return data.orcamentos;
 }
 
+export async function getOrcamento(id: string): Promise<Orcamento> {
+  const response = await fetch(API_URL+'/'+id);
+  if (!response.ok) {
+    throw new Error('Erro ao obter orcidamentos da API');
+  }
+  const data = await response.json();
+  return data.orcamentos;
+}
+
 // Função para adicionar uma nova orcamento
 export async function addOrcamento(novaOrcamento: Orcamento) {
   const response = await fetch(API_URL, {
@@ -25,6 +34,5 @@ export async function addOrcamento(novaOrcamento: Orcamento) {
     throw new Error('Erro ao adicionar orcamento na API');
   }
   const data = await response.json();
-  console.log(data);
   return data.id;
 }

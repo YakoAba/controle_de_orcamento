@@ -1,24 +1,21 @@
 //formulario.tsx
-
 import { MarcaProvider } from "@/marcas/context";
 import { ProdutoProvider } from "@/produtos/context";
 import { ClienteProvider } from "@/clientes/context"
-import { useOrcamentoContext } from "@/orcamentos/context";
+import { OrcamentoProvider, useOrcamentoContext } from "@/orcamentos/context";
 
 export default function FormularioOrcamento({ dados, produtos, marca, produto, cliente }: any) {
   const { orcamentoSelecionada } = useOrcamentoContext();
 
   function abrirNovaAbaComJson(json: string) {
     // Cria a URL com o JSON como parâmetro
-    const url = `/layout.html?json=` + json;
-
+    const url = `/relatorio?json=` + json;
     // Abre a nova aba
     window.open(url, "_blank");
   }
 
   function enviarDadosParaNodeJS() {
-    console.log(orcamentoSelecionada)
-    // console.log("Enviando dados para o Node.js:", json);
+     console.log("Enviando dados para o Node.js:", JSON.stringify(orcamentoSelecionada));
     fetch("/api/orcamentos", {
       method: "POST",
       headers: {
@@ -35,11 +32,12 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
       })
       .then((data) => {
         console.log("Resposta do servidor:", data);
-        if (data.mensagens && data.mensagens.length > 0) {
-          data.mensagens.forEach((msg: { erro: any; }) => {
+        if (data.id.mensagens && data.id.mensagens.length > 0) {
+          data.id.mensagens.forEach((msg: { erro: any; }) => {
             // console.log(msg.mensagem);
             if (msg.erro) console.error(msg.erro);
-            else abrirNovaAbaComJson(JSON.stringify({}));
+            orcamentoSelecionada.id = data.id.id;
+             abrirNovaAbaComJson(JSON.stringify(orcamentoSelecionada));
           });
         }
       })
@@ -47,6 +45,7 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
   }
 
   return (
+
     <div className="container mt-1 p-1">
       <ul className="nav nav-tabs" id="myTab" role="tablist">
         <li className="nav-item" role="presentation">
@@ -72,7 +71,7 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
       </ul>
       <div className="tab-content" id="myTabContent">
         <div className="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
-          {dados}
+        {dados}
           {/* <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button> */}
         </div>
         <div className="tab-pane fade" id="produtos" role="tabpanel" aria-labelledby="produtos-tab">

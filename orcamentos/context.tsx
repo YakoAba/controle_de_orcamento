@@ -20,7 +20,9 @@ export const OrcamentoProvider = ({ children }: OrcamentoProviderProps) => {
     id:'',
     cliente_id:'',
     data : '',
-    validade : ''
+    validade : '',
+    nome:'',
+    documento: ''
   });
 
   const carregarOrcamentos = async () => {

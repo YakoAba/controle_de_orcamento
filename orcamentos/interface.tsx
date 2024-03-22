@@ -7,6 +7,8 @@ export type Orcamento = {
   cliente_id: string;
   data: string;
   validade: string;
+  nome:string;
+  documento:string;
 };
 
 // Definindo o tipo para o contexto

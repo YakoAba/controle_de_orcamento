@@ -2,12 +2,9 @@
 // Função para obter parâmetros de consulta da URL
 function getParameterByName(name, url) {
   if (!url) url = window.location.href;
-  console.log(url)
   name = name.replace(/[\[\]]/g, "\\$&");
-  console.log(name)
   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
     results = regex.exec(url);
-    console.log(results[2]) 
   if (!results) return null;
   if (!results[2]) return "";
   return decodeURIComponent(results[2].replace(/\+/g, " "));
@@ -44,25 +41,26 @@ async function iniciarBuscaOrcamento() {
     const jsonValue = getParameterByName("json");
     if (jsonValue !== null) {
       const json = JSON.parse(jsonValue);
-      console.log("Valor do parâmetro json:", json);
+      console.log(json.validade)
+      // console.log("Valor do parâmetro json:", json);
       // const json = await buscarOrcamentoPorId(jsonValue);
       // console.log(json)
       // document.getElementById('orcamento_numero').innerHTML = "Orçamento Nº " + jsonValue;
       // document.getElementById('Validade').innerHTML = formatarDataBrasil(json.dados[0].validade_orcamento);
-      document.getElementById('data').innerHTML = 'Aparecida de Goiânia, '+ json.dataOrcamento;
-      document.getElementById('Validade').innerHTML =  json.validadeOrcamento;
+      document.getElementById('data').innerHTML = 'Aparecida de Goiânia, '+ json.data;
+      document.getElementById('Validade').innerHTML =  json.validade;
       
-      // document.getElementById('frete').innerHTML = json.dados[0].valor_frete.toLocaleString(undefined, { style: 'currency', currency: 'BRL' });
-       document.getElementById('nome').innerHTML = json.nomeCliente;
-      // document.getElementById('cep').innerHTML = json.dados[0].cepEnvio;
-      // document.getElementById('uf_envio').innerHTML = json.dados[0];
-      document.getElementById('CPF').innerHTML = json.cpfcliente;
-      document.getElementById('prazoEntrega').innerHTML = json.prazoentrega;
-      document.getElementById('envio').innerHTML = json.formaEnvio
-      document.getElementById('cep').innerHTML = json.cepEnvio
-      document.getElementById('uf_envio').innerHTML = json.ufEnvio
-      document.getElementById('frete').innerHTML = json.valorFrete
-      document.getElementById('formaPagamento').innerHTML = json.formaPagamento
+      // // document.getElementById('frete').innerHTML = json.dados[0].valor_frete.toLocaleString(undefined, { style: 'currency', currency: 'BRL' });
+      //  document.getElementById('nome').innerHTML = json.nomeCliente;
+      // // document.getElementById('cep').innerHTML = json.dados[0].cepEnvio;
+      // // document.getElementById('uf_envio').innerHTML = json.dados[0];
+      // document.getElementById('CPF').innerHTML = json.cpfcliente;
+      // document.getElementById('prazoEntrega').innerHTML = json.prazoentrega;
+      // document.getElementById('envio').innerHTML = json.formaEnvio
+      // document.getElementById('cep').innerHTML = json.cepEnvio
+      // document.getElementById('uf_envio').innerHTML = json.ufEnvio
+      // document.getElementById('frete').innerHTML = json.valorFrete
+      // document.getElementById('formaPagamento').innerHTML = json.formaPagamento
       // console.log(json.cpfcliente)
       // console.log(json.dados)
       // extrairDetalhesPagamento(); 

@@ -1,11 +1,11 @@
 import { ChangeEvent } from 'react';
+import { useOrcamentoContext } from '../context';
 
-interface DataInputProps {
-  value: string;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-}
-
-function DataInput({ value, onChange }:DataInputProps) {
+function DataInput() {
+  const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext();
+  const handleDataChange = (event: ChangeEvent<HTMLInputElement>) => {
+    selecionarOrcamento({ ...orcamentoSelecionada, data: event.target.value })
+  };
   return (
     <div className="form-group mt-2 mb-2">
       <label htmlFor='dataOrcamento' className="text-white">Data do Orçamento:</label>
@@ -14,8 +14,8 @@ function DataInput({ value, onChange }:DataInputProps) {
         id="dataOrcamento"
         name="dataOrcamento"
         className="form-control bg-secondary text-white border border-secondary"
-        value={value}
-        onChange={onChange} />
+        value={orcamentoSelecionada.data}
+        onChange={handleDataChange} />
     </div>
   );
 }

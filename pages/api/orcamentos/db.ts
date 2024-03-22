@@ -1,7 +1,18 @@
-import { getAllRecords, insertData } from "../db";
-
+import { getAllRecords, getRecordById, insertData } from "../db";
+interface Logs {
+    status: string;
+    dadosRecebidos: any;
+    mensagens: string[]; // Array de strings para as mensagens
+    id: number | null; // ID pode ser um número ou nulo
+}
 // Função para realizar a inserção de dados
-export async function insertOne(data: any): Promise<void> {
+export async function insertOne(data: any): Promise<Logs> {
+    let logs: Logs = {
+        status: "sucesso",
+        dadosRecebidos: data,
+        mensagens: [],
+        id: null,
+    };
 
     // const sql = 
     // `
@@ -11,7 +22,7 @@ export async function insertOne(data: any): Promise<void> {
     //         forma_pagamento, prazo_fabricacao, prazo_entrega, observacao
     //     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     // `;
-    const sql =`INSERT INTO orcamentos (
+    const sql = `INSERT INTO orcamentos (
                  data, validade, cliente_id ) VALUES (?, ?, ?)`;
     const values = [
         data.data || null,
@@ -31,9 +42,13 @@ export async function insertOne(data: any): Promise<void> {
         const lastInsertedId = await insertData(sql, values);  // Chama a função insertData com o SQL e os valores
         console.log('ID do último registro inserido:', lastInsertedId);
         // Lógica adicional aqui após a inserção bem-sucedida
+        logs.mensagens.push('Inserção bem sucedida!');
+        logs.id = lastInsertedId;
+        return logs
     } catch (error) {
         console.error('Erro ao inserir dados:', error);
         // Tratar o erro aqui, se necessário
+        return logs
     }
 }
 
@@ -45,5 +60,16 @@ export async function getAll(): Promise<any> {
     } catch (error) {
         console.error('Erro ao buscar orcamentos:', error);
         throw new Error('Falha ao buscar orcamentos no banco de dados');
+    }
+}
+
+// Exemplo de uso da função getAllRecords
+export async function getOne(id: number): Promise<any> {
+    try {
+        const orcamentos = await getRecordById('orcamentos', id);
+        return orcamentos;
+    } catch (error) {
+        console.error('Erro ao buscar orcamento:', error);
+        throw new Error('Falha ao buscar orcamento no banco de dados');
     }
 }
