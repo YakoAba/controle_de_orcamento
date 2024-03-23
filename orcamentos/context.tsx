@@ -24,7 +24,13 @@ export const OrcamentoProvider = ({ children }: OrcamentoProviderProps) => {
     nome: '',
     documento: '',
     forma_envio: '',
-    Cep:""
+    Cep:"",
+    Uf:"",
+    vfrete: "",
+    pagamento: "",
+    prazo_entrega:"",
+    prazo_fabricacao: "",
+    prazo_observacao : ""
   });
 
   const carregarOrcamentos = async () => {
