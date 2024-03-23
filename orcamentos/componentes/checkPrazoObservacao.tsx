@@ -1,21 +1,17 @@
-import { useGlobalContext } from '@/context';
 import React, { useState } from 'react';
+import { useOrcamentoContext } from '../context';
 
 export default function Observacao() {
+  const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext();
   const [mostrarInput, setMostrarInput] = useState(false);
-  const { jsonData, setData } = useGlobalContext();
 
-  // Função para lidar com a mudança do checkbox
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    selecionarOrcamento({ ...orcamentoSelecionada, prazo_observacao : event.target.value })
+  };
   const handleCheckboxChange = () => {
     setMostrarInput(!mostrarInput); // Inverte o estado de visibilidade do input
   };
-  
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setData({
-      ...jsonData,
-      observacao: event.target.value,
-    });
-  };
+
 
   return (
     <div className="form-group mt-2 mb-2">
@@ -30,9 +26,9 @@ export default function Observacao() {
 
       {mostrarInput && (<textarea
         id="observacao"
-        className="form-control bg-secondary border-secondary rounded mt-2 mb-2 "
+        className="form-control text-white bg-secondary border-secondary rounded mt-2 mb-2 "
         name="observacaoprazo"
-        value={jsonData.observacao}
+        value={orcamentoSelecionada.prazo_observacao}
         onChange={handleChange}
       >
       </textarea>)}

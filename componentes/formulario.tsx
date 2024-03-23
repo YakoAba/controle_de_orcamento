@@ -72,7 +72,6 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
       <div className="tab-content" id="myTabContent">
         <div className="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
         {dados}
-          {/* <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button> */}
         </div>
         <div className="tab-pane fade" id="produtos" role="tabpanel" aria-labelledby="produtos-tab">
           {produtos}

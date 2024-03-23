@@ -9,11 +9,11 @@ interface MarcaInputProps {
 export default function ComboBoxMarcas({ value, marcas, onChange }: MarcaInputProps) {
   return (
     <div className="form-group mt-2 mb-2">
-      <label htmlFor='tipoCliente' className='text-white'>Marca do Produto:</label>
+      <label htmlFor='selMarca' className='text-white'>Marca do Produto:</label>
       <select
-        id='tipoCliente'
+        id='selMarca'
         className="form-select bg-secondary text-white border-secondary"
-        name='tipoCliente'
+        name='selMarca'
         value={value}
         onChange={onChange}
       >

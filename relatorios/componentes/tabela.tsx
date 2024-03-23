@@ -10,6 +10,8 @@ import React from 'react';
   conta: string;
   banco: string;
   total: string;
+  prazo_fabricacao: string;
+  prazo_observacao: string;
 }
 
 function PrazosTable({
@@ -23,27 +25,61 @@ function PrazosTable({
   conta,
   banco,
   total,
+  prazo_fabricacao,
+  prazo_observacao
 }: PrazosTableProps): React.ReactElement {
 
   return (
-    <table style={{ borderCollapse: 'collapse', marginLeft: '5.56pt' }}>
+    <table id="gridDados" style={{ borderCollapse: 'collapse', marginLeft: '5.56pt' }}>
       <tbody>
         <tr style={{ height: '0pt' }}>
           <td
             style={{
-              width: '526pt',
+              width: '190pt',
               borderTopStyle: 'solid',
               borderTopWidth: '1pt',
               borderBottomStyle: 'solid',
               borderBottomWidth: '1pt',
             }}
-            colSpan={5}
+            colSpan={1}
           >
-            <p className="s4" style={{ paddingLeft: '1pt', textAlign: 'left' }}>Prazos</p>
-            <p className="s5" style={{ paddingLeft: '1pt', textAlign: 'left' }}>
+            <p className="s4" style={{ paddingTop: '6pt', paddingLeft: '1pt', textAlign: 'left' }}>Prazos</p>
+            <p className="s5" style={{ paddingTop: '6pt', paddingLeft: '1pt', textAlign: 'left' }}>
               Prazo de entrega: <span id="prazoEntrega" className="s6">{prazoEntrega}</span>
             </p>
           </td>
+          <td
+            style={{
+              width: '190pt',
+              borderTopStyle: 'solid',
+              borderTopWidth: '1pt',
+              borderBottomStyle: 'solid',
+              borderBottomWidth: '1pt',
+            }}
+            colSpan={2}
+          >
+            {/* <p className="s4" style={{ paddingLeft: '1pt', textAlign: 'left' }}>Prazos</p> */}
+            <p className="s5" style={{ paddingTop: '30pt',paddingLeft: '1pt', textAlign: 'left' }}>
+            Prazo de fabricação:  <span id="prazoEntrega" className="s6">{prazo_fabricacao}</span>
+            </p>
+          </td>
+        </tr>
+        <tr>
+        <td
+            style={{
+              width: '190pt',
+              borderTopStyle: 'solid',
+              borderTopWidth: '1pt',
+              borderBottomStyle: 'solid',
+              borderBottomWidth: '1pt',
+            }}
+            colSpan={2}
+          >
+            {/* <p className="s4" style={{ paddingLeft: '1pt', textAlign: 'left' }}>Prazos</p> */}
+            <p className="s5" style={{ paddingTop: '15pt',paddingLeft: '1pt', textAlign: 'left' }}>
+              observação: <span id="prazoEntrega" className="s6">{prazo_observacao}</span>
+            </p>
+            </td>
         </tr>
         <tr style={{ height: '25pt' }}></tr>
         <tr style={{}}>
@@ -61,7 +97,7 @@ function PrazosTable({
             </p>
           </td>
           <td style={{ width: '130pt', borderBottomStyle: 'solid', borderBottomWidth: '1pt' }}>
-            <p className="s5" style={{ paddingTop: '6pt', paddingLeft: '20pt', textAlign: 'left' }}>
+            <p className="s5" style={{ paddingTop: '6pt', textAlign: 'left' }}>
               CEP: <span id="cep" className="s6">{cep}</span>
             </p>
           </td>
@@ -86,13 +122,15 @@ function PrazosTable({
           <td style={{ width: '166pt', borderTopStyle: 'solid', borderTopWidth: '1pt' }}></td>
         </tr>
         <tr style={{ height: '29pt' }}>
-          <td style={{ width: '526pt' }} colSpan={4}>
+          <td style={{ width: '200pt' }} colSpan={4}>
             <p className="s5" style={{ paddingTop: '6pt', paddingLeft: '1pt', textAlign: 'left' }}>
-              Pagamento via: <span id="formaPagamento" className="s6">{formaPagamento}</span>
+              Pagamento via: <span id="formaPagamento" className="s6">{formaPagamento}
+                {formaPagamento === 'PIX' ? <p className="s6">email: financeiro@espacocadeiraderodas.com.br</p> : <></>}</span>
             </p>
           </td>
         </tr>
-        <tr style={{ height: '29pt' }}>
+
+        {formaPagamento === 'depósito' ? <tr style={{ height: '29pt' }}>
           <td style={{ width: '165pt' }}>
             <p className="s5" style={{ paddingTop: '6pt', paddingLeft: '1pt', textAlign: 'left' }}>
               Agência: <span id="agencia" className="s6">{agencia}</span>
@@ -107,8 +145,8 @@ function PrazosTable({
             <p className="s5" style={{ paddingTop: '6pt', paddingLeft: '55pt', textAlign: 'left' }}>
               Banco: <span id="banco" className="s6">{banco}</span>
             </p>
-          </td>
-        </tr>
+          </td> </tr> : <></>
+        }
         <tr style={{ height: '35pt' }}>
           <td style={{ width: '295pt', borderBottomStyle: 'solid', borderBottomWidth: '1pt' }} colSpan={2}>
             <p className="s5" style={{ paddingTop: '6pt', paddingLeft: '1pt', textAlign: 'left' }}>

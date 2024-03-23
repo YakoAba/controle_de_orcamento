@@ -3,12 +3,12 @@ import DataInput from './inputData';
 import ValidadeInput from './inputValidade';
 import ComboBoxFormaEnvio from '@/componentes/comboboxFormaEnvio';
 import CEPInput from '@/orcamentos/componentes/inputCEP';
-import ComboBoxUF from '@/componentes/comboboxUF';
-import ValorFreteInput from '@/componentes/inputValorFrete';
-import ComboBoxFormaPagamento from '@/componentes/comboboxFormaPagamento';
-import PrazoFabricacao from '@/componentes/checkPrazoFabricacao';
-import PrazoEntrega from '@/componentes/checkPrazoEntrega';
-import Observacao from '@/componentes/checkPrazoObservacao';
+import ComboBoxUF from '@/orcamentos/componentes/comboboxUF';
+import ValorFreteInput from '@/orcamentos/componentes/inputValorFrete';
+import ComboBoxFormaPagamento from '@/orcamentos/componentes/comboboxFormaPagamento';
+import PrazoFabricacao from '@/orcamentos/componentes/checkPrazoFabricacao';
+import PrazoEntrega from '@/orcamentos/componentes/checkPrazoEntrega';
+import Observacao from '@/orcamentos/componentes/checkPrazoObservacao';
 
 export default function AbaDados() {
  

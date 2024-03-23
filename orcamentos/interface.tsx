@@ -11,6 +11,12 @@ export type Orcamento = {
   documento:string;
   forma_envio:string;
   Cep:string
+  Uf:string;
+  vfrete: string;
+  pagamento: string;
+  prazo_entrega:string;
+  prazo_fabricacao: string;
+  prazo_observacao : string
 };
 
 // Definindo o tipo para o contexto

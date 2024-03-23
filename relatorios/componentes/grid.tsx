@@ -33,7 +33,7 @@ export default function Grid({ item, modelo, marca, unidade, quantidade, valor, 
   } as React.CSSProperties;
 
   return (
-    <table style={{ borderCollapse: 'collapse', marginLeft: '5.56pt' }} cellSpacing="0">
+    <table id="gridDados" style={{ borderCollapse: 'collapse', marginLeft: '5.56pt' }} cellSpacing="0">
       <tbody>
         <tr style={{ height: '15pt' }}>
           <td style={{ ...estiloCelula, width: '40pt' }}>

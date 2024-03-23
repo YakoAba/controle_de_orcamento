@@ -1,14 +1,13 @@
-import { useGlobalContext } from "@/context";
+import { ChangeEvent } from "react";
+import { useOrcamentoContext } from "../context";
 
 export default function ComboBoxUF() {
-    const { jsonData, setData } = useGlobalContext();
+    const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext();
 
-    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setData({
-            ...jsonData,
-            ufEnvio: event.target.value,
-        });
-    };
+    const handleUFChange = (event: ChangeEvent<HTMLSelectElement>) => {
+        selecionarOrcamento({ ...orcamentoSelecionada, Uf: event?.target.value })
+    }
+
     return (
         <div className="form-group m-2">
             <label className='text-white' htmlFor={'ufEnvio'}>UF:</label>
@@ -16,8 +15,8 @@ export default function ComboBoxUF() {
                 id={'ufEnvio'}
                 className="form-select bg-secondary text-white border-secondary"
                 name={'unidadefederativa'}
-                value={jsonData.ufEnvio}
-                onChange={handleChange}>
+                value={orcamentoSelecionada.Uf}
+                onChange={handleUFChange}>
                 <option value="AC">Acre</option>
                 <option value="AL">Alagoas</option>
                 <option value="AP">Amapá</option>

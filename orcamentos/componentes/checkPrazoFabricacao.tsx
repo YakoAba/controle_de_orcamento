@@ -1,23 +1,21 @@
-import { useGlobalContext } from '@/context';
 import React, { useState } from 'react';
+import { useOrcamentoContext } from '../context';
 
 export default function PrazoFabricacao() {
   // Estado para controlar a visibilidade do input
+  const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext();
   const [mostrarInput, setMostrarInput] = useState(false);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    selecionarOrcamento({ ...orcamentoSelecionada, prazo_fabricacao : event.target.value })
+  };
+
 
   // Função para lidar com a mudança do checkbox
   const handleCheckboxChange = () => {
     setMostrarInput(!mostrarInput); // Inverte o estado de visibilidade do input
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setData({
-      ...jsonData,
-      prazoFabricacao: event.target.value,
-    });
-  };
-
-  const { jsonData, setData } = useGlobalContext();
   return (
     <div className="form-group mt-2 mb-2">
       <input
@@ -35,9 +33,9 @@ export default function PrazoFabricacao() {
           type="text"
           id="prazoFabricacao"
           placeholder="Dias para fabricação"
-          className="form-control bg-secondary border-secondary rounded mt-2 mb-2"
+          className="text-white form-control bg-secondary border-secondary rounded mt-2 mb-2"
           name="prazofabricar"
-          value={jsonData.prazoFabricacao}
+          value={orcamentoSelecionada.prazo_fabricacao}
           onChange={handleChange}
         />
       )}

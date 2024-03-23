@@ -49,35 +49,47 @@ export default function RelatorioOrcamento() {
   if (!orcamento) {
     return <div>Loading...</div>; // Exibe uma mensagem de carregamento enquanto os dados estão sendo carregados
   }
-    // if (!orcamento) {
-    //   return <div className="text-white">Loading...</div>; // Exibe uma mensagem de carregamento enquanto os dados estão sendo carregados
-    // }
+  // if (!orcamento) {
+  //   return <div className="text-white">Loading...</div>; // Exibe uma mensagem de carregamento enquanto os dados estão sendo carregados
+  // }
 
-    return (
-        <div className="containerRelatorio">
-            <div id="container" className="containerRel">
-                <CabecarioRelatorio /><br />
-                <p className="s1 data" id="data">
-                    Aparecida de Goiânia, {formatarDataBrasil(orcamento?.data)}
-                </p>
-                <p id="Validade" className="s1 data">
-                    Validade do orçamento: {formatarDataBrasil(orcamento?.validade)}
-                </p><br />
-                <h2 id="orcamento_numero">ORÇAMENTO: {orcamento?.id}</h2><br />
-                <p className="s1 data" id="nome">Razão Social/Nome Completo:<br/> {orcamento?.nome}</p>
-                <p style={{ paddingLeft: '14pt', textIndent: '0pt', textAlign: 'left', marginBottom: '1em' }}></p>
+  return (
+    <div className="containerRelatorio">
+      <div id="container" className="containerRel">
+        <CabecarioRelatorio /><br />
+        <p className="s1 data" id="data">
+          Aparecida de Goiânia, {formatarDataBrasil(orcamento?.data)}
+        </p>
+        <p id="Validade" className="s1 data">
+          Validade do orçamento: {formatarDataBrasil(orcamento?.validade)}
+        </p><br />
+        <h2 id="orcamento_numero">ORÇAMENTO: {orcamento?.id}</h2><br />
+        <p className="s1 data" id="nome">Razão Social/Nome Completo:<br /> {orcamento?.nome}</p>
+        <p style={{ paddingLeft: '14pt', textIndent: '0pt', textAlign: 'left', marginBottom: '1em' }}></p>
 
-                <p className="s1 data" id="CPF">CNPJ/CPF:<br/>{orcamento?.documento}</p><br />
-                <h3 className="produtos">PRODUTOS</h3>
-                <p className="paragrafo"><br /></p>
-                <GridRelatorio item={""} modelo={""} marca={""} unidade={""} quantidade={""} valor={""} total={""} />
-                <p className="paragrafo"><br /></p>
-                <h1>Termos do Orçamento</h1>
-                <p className="paragrafo" />
-                <p className="paragrafo"><br /></p>
-                <PrazosTable prazoEntrega={""} envio={orcamento?.forma_envio} cep={orcamento?.Cep}  ufEnvio={""} frete={""} formaPagamento={""} agencia={""} conta={""} banco={""} total={""} />
-                <Rodape />
-            </div>
-        </div>
-    )
+        <p className="s1 data" id="CPF">CNPJ/CPF:<br />{orcamento?.documento}</p><br />
+        <h3 className="produtos">PRODUTOS</h3>
+        <p className="paragrafo"><br /></p>
+        <GridRelatorio item={""} modelo={""} marca={""} unidade={""} quantidade={""} valor={""} total={""} />
+        <p className="paragrafo"><br /></p>
+        <h1>Termos do Orçamento</h1>
+        <p className="paragrafo" />
+        <p className="paragrafo"><br /></p>
+        <PrazosTable prazoEntrega={orcamento?.prazo_entrega} 
+                     envio={orcamento?.forma_envio} 
+                     cep={orcamento?.Cep} 
+                     ufEnvio={orcamento?.Uf} 
+                     frete={formatarMoedaBrasil(orcamento?.vfrete)} 
+                     formaPagamento={orcamento?.pagamento} 
+                     agencia={""} 
+                     conta={""} 
+                     banco={""} 
+                     total={formatarMoedaBrasil(orcamento?.vfrete)} 
+                     prazo_fabricacao={orcamento?.prazo_fabricacao}
+                     prazo_observacao={orcamento?.prazo_observacao}
+        />
+        <Rodape />
+      </div>
+    </div>
+  )
 }
