@@ -1,5 +1,7 @@
 // services/produtoService.ts
 
+import { Produto } from "./interface";
+
 const API_URL = 'api/produtos'; // Altere para a URL correta da sua API
 const API_URL_MARCAS = 'api/marcas'; // Altere para a URL correta da sua API
 
@@ -13,7 +15,7 @@ export async function getMarcas() {
 }
 
 // Função para obter todas as produtos
-export async function getProdutos() {
+export async function getProdutos(): Promise<Produto[]> {
   const response = await fetch(API_URL);
   if (!response.ok) {
     throw new Error('Erro ao obter produtos da API');

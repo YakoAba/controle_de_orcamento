@@ -1,6 +1,15 @@
 //interface.tsx
 import { ReactNode } from "react";
 
+export type Item = {
+  id: string,
+  produto_id: string,
+  nome: string,
+  marca:string,
+  quantidade: number,
+  valorUnitario: number,
+  total: number,
+}
 // Definindo o tipo para a orcamento
 export type Orcamento = {
   id: string;
@@ -16,15 +25,19 @@ export type Orcamento = {
   pagamento: string;
   prazo_entrega:string;
   prazo_fabricacao: string;
-  prazo_observacao : string
+  prazo_observacao : string;
+  itens : Item[];
 };
 
 // Definindo o tipo para o contexto
 export type OrcamentoContextType = {
   orcamentos: Orcamento[];
   orcamentoSelecionada: Orcamento;
+  item: Item;
   selecionarOrcamento: (orcamento: Orcamento) => void;
+  setItem: (item: Item) => void;
   addOrcamento: (novaOrcamento: Orcamento) => Promise<void>;
+  addItem: (novaItem: Item) => Promise<void>;
 };
 
 export type OrcamentoProviderProps = {

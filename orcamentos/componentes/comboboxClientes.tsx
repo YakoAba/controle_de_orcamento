@@ -1,26 +1,13 @@
-import { Cliente } from '@/clientes/interface';
-import React, { ChangeEvent, useEffect, useState } from 'react';
-import { getClientes } from '@/clientes/service';
 import { useOrcamentoContext } from '../context';
+import { useClienteContext, ClienteProvider } from '@/clientes/context';
+import { ChangeEvent, useState } from 'react';
 
 function ComboBoxClientes() {
   const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext()
-  const [clientes, setClientes] = useState<Cliente[]>([]);
+  const { clientes } = useClienteContext()
+  //const [clientes, setClientes] = useState<Cliente[]>([]);
   const [cpf, setCpf] = useState('');
   const [tipo, setTipo] = useState('');
-
-  useEffect(() => {
-    const fetchClientes = async () => {
-      try {
-        const data = await getClientes();
-        setClientes(data); // Supondo que a resposta da API seja um objeto com a propriedade "clientes"
-      } catch (error) {
-        console.error('Erro ao obter clientes da API:', error);
-        // Trate o erro de acordo com a sua lógica de tratamento de erros
-      }
-    };
-    fetchClientes();
-  }, []);
 
   const handleClienteChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedClientId = event.target.value;
@@ -34,10 +21,8 @@ function ComboBoxClientes() {
         documento: selectedClient.cpf_cliente,
       };
       selecionarOrcamento(updatedOrcamento)
-   
       setTipo(selectedClient.tipo_cliente);
       setCpf(selectedClient.cpf_cliente); // Supondo que o cliente possui uma propriedade "cpf"
-      alert(JSON.stringify(orcamentoSelecionada))
     } else {
       setTipo('');
       setCpf(''); // Caso não encontre o cliente, limpa o CPF

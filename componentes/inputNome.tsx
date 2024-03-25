@@ -1,16 +1,16 @@
-import { useGlobalContext } from "@/context";
+// import { useGlobalContext } from "@/context";
 import { ChangeEvent } from "react";
 
 //inputDate.tsx
 export default function NomeInput() {
-    const { jsonData, setData } = useGlobalContext();
+    // const { jsonData, setData } = useGlobalContext();
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setData({
-            ...jsonData,
-            nomeCliente: event.target.value,
-        });
-    };
+    // const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    //     setData({
+    //         ...jsonData,
+    //         nomeCliente: event.target.value,
+    //     });
+    // };
 
     return (
         <div className="form-group mt-2 mb-2">
@@ -19,8 +19,8 @@ export default function NomeInput() {
                 type="text"
                 id="nomeCliente" name="nomecliente" placeholder="Nome completo"
                 className={`form-control bg-secondary text-white border border-secondary`}
-                value={jsonData.nomeCliente}
-                onChange={handleChange}
+                // value={jsonData.nomeCliente}
+                // onChange={handleChange}
             />
         </div>
     );

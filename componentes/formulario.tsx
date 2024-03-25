@@ -71,7 +71,7 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
       </ul>
       <div className="tab-content" id="myTabContent">
         <div className="tab-pane fade show active" id="dados" role="tabpanel" aria-labelledby="dados-tab">
-        {dados}
+        <ClienteProvider>{dados}</ClienteProvider>
         </div>
         <div className="tab-pane fade" id="produtos" role="tabpanel" aria-labelledby="produtos-tab">
           {produtos}

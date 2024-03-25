@@ -1,15 +1,12 @@
+import { Item } from '@/orcamentos/interface';
 import React from 'react';
+import { formatarDataBrasil, formatarMoedaBrasil } from '../tools';
 
 interface GridProps {
-  item: string;
-  modelo: string;
-  marca: string;
-  unidade: string;
-  quantidade: string;
-  valor: string;
+  items: Item[];
   total: string;
 }
-export default function Grid({ item, modelo, marca, unidade, quantidade, valor, total }: GridProps) {
+export default function Grid({ items, total  }: GridProps) {
   const estiloCelula = {
     width: '40pt',
     borderTopStyle: 'solid',
@@ -39,15 +36,15 @@ export default function Grid({ item, modelo, marca, unidade, quantidade, valor, 
           <td style={{ ...estiloCelula, width: '40pt' }}>
             <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>Item</p>
           </td>
-          <td style={{ ...estiloCelula, width: '106pt' }}>
+          <td style={{ ...estiloCelula, width: '200pt' }}>
             <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>Modelo</p>
           </td>
           <td style={{ ...estiloCelula, width: '116pt' }}>
             <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>Marca</p>
           </td>
-          <td style={{ ...estiloCelula, width: '44pt' }}>
+         {/*  <td style={{ ...estiloCelula, width: '44pt' }}>
             <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>Unid.</p>
-          </td>
+          </td> */}
           <td style={{ ...estiloCelula, width: '35pt' }}>
             <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>Qtd.</p>
           </td>
@@ -59,29 +56,29 @@ export default function Grid({ item, modelo, marca, unidade, quantidade, valor, 
           </td>
         </tr>
         {/* Exemplo de linha na tabela */}
-        <tr style={{ height: '17pt' }}>
+        {items &&  items.map((item) => <tr style={{ height: '17pt' }}>
           <td style={{ ...estiloCelula, width: '40pt' }}>
-            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{item}</p>
+            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{item.produto_id}</p>
           </td>
           <td style={{ ...estiloCelula, width: '106pt' }}>
-            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{modelo}</p>
+            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{item.nome}</p>
           </td>
           <td style={{ ...estiloCelula, width: '116pt' }}>
-            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{marca}</p>
+            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{item.marca}</p>
           </td>
-          <td style={{ ...estiloCelula, width: '44pt' }}>
-            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{unidade}</p>
-          </td>
+          {/* <td style={{ ...estiloCelula, width: '44pt' }}>
+            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{}</p>
+          </td> */}
           <td style={{ ...estiloCelula, width: '35pt' }}>
-            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{quantidade}</p>
+            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{item.quantidade}</p>
           </td>
           <td style={{ ...estiloCelula, width: '86pt' }}>
-            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{valor}</p>
+            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{formatarMoedaBrasil(item.valorUnitario.toString())}</p>
           </td>
           <td style={{ ...estiloCelula, width: '99pt' }}>
-            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{total}</p>
+            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{formatarMoedaBrasil(item.total.toString())}</p>
           </td>
-        </tr>
+        </tr>)}
         <tr style={{ height: '17pt' }}>
           <td style={{ ...estiloCelula, width: '40pt' }}>
             <p className="s2" style={{ ...estiloParagrafo, paddingLeft: '6pt' }}></p>
@@ -95,14 +92,14 @@ export default function Grid({ item, modelo, marca, unidade, quantidade, valor, 
           <td style={{ ...estiloCelula, width: '44pt' }}>
             <p className="s2" style={{ ...estiloParagrafo, paddingRight: '7pt', textAlign: 'right' }}></p>
           </td>
-          <td style={{ ...estiloCelula, width: '35pt' }}>
+          {/* <td style={{ ...estiloCelula, width: '35pt' }}>
             <p className="s2" style={{ ...estiloParagrafo, paddingLeft: '6pt', paddingRight: '5pt', textAlign: 'center' }}></p>
-          </td>
+          </td> */}
           <td style={{ ...estiloCelula, width: '86pt' }}>
             <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>Subotal:</p>
           </td>
           <td style={{ ...estiloCelula, width: '99pt' }}>
-            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>R$ 100,00</p>
+            <p className="s2" style={{ ...estiloParagrafo, textAlign: 'center' }}>{total }</p>
           </td>
         </tr>
       </tbody>

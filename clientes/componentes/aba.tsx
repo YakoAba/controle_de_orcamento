@@ -28,7 +28,9 @@ export default function AbaCliente() {
                 id: '', // You may need to generate an ID here
                 data_cadastro: '' // Set the date of registration if needed
             };
+
             const id = await addCliente(newCliente);
+            
             console.log(id)
             setNomeCliente(''); // Limpa o campo de entrada após adicionar o cliente
             setCPFCliente(''); // Limpa o campo de CPF após adicionar o cliente

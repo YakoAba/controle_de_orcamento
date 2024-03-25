@@ -11,15 +11,15 @@ import PrazoEntrega from '@/orcamentos/componentes/checkPrazoEntrega';
 import Observacao from '@/orcamentos/componentes/checkPrazoObservacao';
 
 export default function AbaDados() {
- 
+
   return (
     <>
       <div className="border border-secondary rounded-3 p-3">
         <div className="d-flex flex-row gap-5 pl-0 pr-0">
-          <DataInput  />
-          <ValidadeInput  />
+          <DataInput />
+          <ValidadeInput />
         </div>
-        <ComboBoxClientes/>
+        <ComboBoxClientes />
       </div>
       <div className="border border-secondary rounded-3 p-3">
         <div className="d-flex flex-row ">

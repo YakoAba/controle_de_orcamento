@@ -129,21 +129,20 @@ function PrazosTable({
             </p>
           </td>
         </tr>
-
-        {formaPagamento === 'depósito' ? <tr style={{ height: '29pt' }}>
+        {formaPagamento === 'DEPÓSITO' ? <tr style={{ height: '29pt' }}>
           <td style={{ width: '165pt' }}>
             <p className="s5" style={{ paddingTop: '6pt', paddingLeft: '1pt', textAlign: 'left' }}>
-              Agência: <span id="agencia" className="s6">{agencia}</span>
+              Agência: <span id="agencia" className="s6">{'3756'}</span>
             </p>
           </td>
           <td style={{ width: '130pt' }}>
             <p className="s5" style={{ paddingTop: '6pt', paddingLeft: '11pt', textAlign: 'left' }}>
-              Conta: <span id="conta" className="s6">{conta}</span>
+              Conta: <span id="conta" className="s6">{'0422239-3'}</span>
             </p>
           </td>
           <td style={{ width: '231pt' }} colSpan={2}>
             <p className="s5" style={{ paddingTop: '6pt', paddingLeft: '55pt', textAlign: 'left' }}>
-              Banco: <span id="banco" className="s6">{banco}</span>
+              Banco: <span id="banco" className="s6">{'Bradesco'}</span>
             </p>
           </td> </tr> : <></>
         }

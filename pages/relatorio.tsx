@@ -5,44 +5,25 @@ import CabecarioRelatorio from '@/relatorios/componentes/header';
 import Rodape from '@/relatorios/componentes/rodape';
 import PrazosTable from '@/relatorios/componentes/tabela';
 import { Orcamento } from '@/orcamentos/interface'; // Importe sua interface Orcamento
-function formatarDataBrasil(data: string) {
-  const partes = data.split('-');
-  if (partes.length !== 3) {
-    throw new Error('Formato de data inválido. Use o formato YYYY-MM-DD.');
-  }
+import { formatarDataBrasil, formatarMoedaBrasil } from '@/relatorios/tools';
 
-  const dia = partes[2];
-  const mes = partes[1];
-  const ano = partes[0];
-
-  return `${dia}/${mes}/${ano}`;
-}
-
-function formatarMoedaBrasil(valor: string) {
-  const valorNumerico = parseFloat(valor); // Certifique-se de que o valor seja numérico
-  if (isNaN(valorNumerico)) {
-    throw new Error('Valor inválido para formatação de moeda.');
-  }
-
-  return valorNumerico.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  });
-}
 export default function RelatorioOrcamento() {
   const router = useRouter();
   const [orcamento, setOrcamento] = useState<Orcamento | null>(null);
+  const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
     const { json } = router.query; // Obtém o parâmetro 'json' da URL
 
     if (json) {
-      try {
+    
         const data = JSON.parse(json as string);
         setOrcamento(data); // Define os dados do JSON no estado
-      } catch (error) {
-        console.error('Erro ao processar JSON:', error);
-      }
+        const soma = data.itens.reduce((acc: any, item: { total: any; }) => acc + item.total, 0);
+        console.log('Soma dos totais:', soma);
+        setTotal(soma)
+
+
     }
   }, [router.query]); // Dependência para recarregar os dados quando a URL mudar
 
@@ -70,7 +51,7 @@ export default function RelatorioOrcamento() {
         <p className="s1 data" id="CPF">CNPJ/CPF:<br />{orcamento?.documento}</p><br />
         <h3 className="produtos">PRODUTOS</h3>
         <p className="paragrafo"><br /></p>
-        <GridRelatorio item={""} modelo={""} marca={""} unidade={""} quantidade={""} valor={""} total={""} />
+        <GridRelatorio items={orcamento?.itens} total={formatarMoedaBrasil(total.toString())} />        
         <p className="paragrafo"><br /></p>
         <h1>Termos do Orçamento</h1>
         <p className="paragrafo" />
@@ -84,7 +65,7 @@ export default function RelatorioOrcamento() {
                      agencia={""} 
                      conta={""} 
                      banco={""} 
-                     total={formatarMoedaBrasil(orcamento?.vfrete)} 
+                     total={formatarMoedaBrasil((parseFloat(orcamento?.vfrete) + total).toString())} 
                      prazo_fabricacao={orcamento?.prazo_fabricacao}
                      prazo_observacao={orcamento?.prazo_observacao}
         />

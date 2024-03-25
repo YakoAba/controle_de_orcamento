@@ -1,21 +1,17 @@
-import { Produto } from '@/context';
-import React from 'react';
+import React, {  } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
+import { Item } from '../interface';
+import ComboboxProdutos from '../componentes/comboboxProdutos';
 
 interface ProdutoOrcamentoProps {
   show: boolean;
   onAdicionar: (event: React.FormEvent<HTMLButtonElement>) => void;
   onClose: () => void;
+  novoItem: Item;
+  setItem: (item: Item) => void
 }
 
-export default function ProdutoOrcamentoModal({ show, onAdicionar, onClose }:ProdutoOrcamentoProps) {
-    const handleInputChange = (
-        field: keyof Produto,
-        value: string | number
-      ) => {
-        // setNovoProduto({ ...novoProduto, [field]: value });
-      };
-      
+export default function ProdutoOrcamentoModal({ show, onAdicionar, onClose, novoItem, setItem }:ProdutoOrcamentoProps) {    
   return (
     <Modal className="bg-light-silver" show={show} onHide={onClose}>
       <Modal.Header className="bg-dark" closeButton>
@@ -23,17 +19,8 @@ export default function ProdutoOrcamentoModal({ show, onAdicionar, onClose }:Pro
       </Modal.Header>
       <Modal.Body className="bg-dark ">
         <Form.Group controlId="formNomeProdutoModal mb-0">
-            <label className="text-white" htmlFor={'nomeProduto'}>Nome:</label>
-            <input
-                id='nomeProduto'
-                type="text"
-                className="form-control bg-secondary text-white border-secondary mt-2 mb-2"
-                placeholder="Nome do Produto"
-                // value={novoProduto.nome}
-                onChange={(e) =>
-                    handleInputChange('nome', e.target.value)
-                } />
-            <label className="text-white" htmlFor={'nomeProduto'}>Marca:</label>
+            <ComboboxProdutos/> 
+            {/* <label className="text-white" htmlFor={'nomeProduto'}>Marca:</label>
             <input
                 id='marcaProduto'
                 type="text"
@@ -43,16 +30,16 @@ export default function ProdutoOrcamentoModal({ show, onAdicionar, onClose }:Pro
                 onChange={(e) =>
                     handleInputChange('marca', e.target.value)
                 }
-            />
+            /> */}
             <label className="text-white" htmlFor={'quantidadeProduto'}>Quantidade:</label>
             <input
                 id='quantidadeProduto'
                 type="number"
                 className="form-control bg-secondary text-white border-secondary mt-2 mb-2"
                 placeholder="Quantidade"
-                // value={novoProduto.quantidade}
+                value={novoItem.quantidade}
                 onChange={(e) =>
-                    handleInputChange('quantidade', +e.target.value)
+                    setItem({...novoItem,quantidade: Number(e.target.value)})
                 }
             />
             <label className="text-white" htmlFor={'valorProduto'}>Valor:</label>
@@ -61,12 +48,9 @@ export default function ProdutoOrcamentoModal({ show, onAdicionar, onClose }:Pro
                 type="number"
                 className="form-control bg-secondary text-white border-secondary mt-2 mb-2 "
                 placeholder="Valor Unitário"
-                // value={novoProduto.valorUnitario}
+                value={novoItem.valorUnitario}
                 onChange={(e) =>
-                    handleInputChange(
-                        'valorUnitario',
-                        +e.target.value
-                    )
+                  setItem({...novoItem,valorUnitario: Number(e.target.value)})
                 }
             />
         </Form.Group>
