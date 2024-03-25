@@ -2,7 +2,7 @@ import MaskedInput from 'react-text-mask';
 import { InputProps } from '../interface';
 // import { useGlobalContext } from "@/context";
 
-function CPFInput({value, onChange}:InputProps) {
+function CPFInput({ value, onChange }: InputProps) {
 
   const validarCPF = (cpf: string) => {
     if (!cpf || cpf.length !== 11) return false;
@@ -41,7 +41,7 @@ function CPFInput({value, onChange}:InputProps) {
         name='cpfcliente'
         className="form-control bg-secondary text-white border border-secondary"
         guide={false} // Não mostra a máscara até que o usuário comece a digitar
-        placeholder="Digite o CPF" 
+        placeholder="Digite o CPF"
         onChange={onChange}
         value={value} />
     </div>

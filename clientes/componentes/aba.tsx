@@ -6,6 +6,8 @@ import CPFInput from "./inputCpf";
 import ComboBoxTipoPessoa from "./comboboTipoPessoa";
 import GridClientes from "./grid";
 import { Cliente } from "../interface";
+import CNPJInput from "./inputCNPJ"; // Importe o componente CNPJInput
+
 
 
 export default function AbaCliente() {
@@ -58,8 +60,13 @@ export default function AbaCliente() {
         <div className="mt-3 mb-3 text-white">
             <legend style={{ fontSize: 'large', color: 'white' }}>Cadastro de Clientes</legend>
             <NomeInput value={nome_cliente} onChange={handleChangeNomeCliente}/>
-            <CPFInput value={cpf_cliente} onChange={handleChangeCpfCliente}/>
             <ComboBoxTipoPessoa value={tipo_cliente} onChange={handleChangeTipoCliente} />
+            {/* <CPFInput value={cpf_cliente} onChange={handleChangeCpfCliente}/> */}
+            {tipo_cliente === 'pj' ? (
+                <CNPJInput value={cpf_cliente} onChange={handleChangeCpfCliente} />
+            ) : (
+                <CPFInput value={cpf_cliente} onChange={handleChangeCpfCliente} />
+            )}
             <ClienteButton onClick={handleAddCliente} /> 
             <GridClientes clientes={clientes} />
         </div>
