@@ -21,6 +21,8 @@ export default function AbaProduto() {
         try {
             const id = await addProduto({ nome_produto, id_marca, nome_marca, id: '', data_cadastro: '' });
             setNome_Produto(''); // Limpa o campo de entrada após adicionar a produto
+            setNome_Marca('');
+            setId_Marca(0)
             alert('Produto adicionada com sucesso');
         } catch (error) {
             console.error('Erro ao adicionar produto:', error);

@@ -38,25 +38,35 @@ export default function CEPInput() {
   const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const CEP = event.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+    const cepInput = event.target.value;
+    const CEP = cepInput.replace(/\D/g, ''); // Remove caracteres não numéricos
     const isValid = validarCEP(CEP);
     
-    if (isValid) {
-      // Verifica em qual UF o CEP se encaixa
-      let uf = null; // Inicializa com null
-      
-      Object.entries(faixasCEP).forEach(([ufKey, faixa]) => {
-        const [faixaInicio, faixaFim] = faixa;
-        if (CEP >= faixaInicio && CEP <= faixaFim) {
-          uf = ufKey;
-        }
-      });
+ 
+      // Verifica se o CEP tem o comprimento adequado (8 dígitos)
+      if (CEP.length >= 5) {
+        // Converte os cinco primeiros caracteres do CEP para um número inteiro
+        const CEPInicio = parseInt(CEP.substring(0, 5), 10);
+
+        // Verifica em qual UF o CEP se encaixa
+        let uf = null; // Inicializa com null
+        
+        Object.entries(faixasCEP).forEach(([ufKey, faixa]) => {
+          const [faixaInicio, faixaFim] = faixa;
+          const faixaInicioInt = parseInt(faixaInicio, 10);
+          const faixaFimInt = parseInt(faixaFim, 10);
+          if (CEPInicio >= faixaInicioInt && CEPInicio <= faixaFimInt) {
+            uf = ufKey;
+          }
+        });
   
-      selecionarOrcamento({ ...orcamentoSelecionada, Cep: event.target.value, Uf: uf || '' });
-    } else {
-      selecionarOrcamento({ ...orcamentoSelecionada, Cep: event.target.value, Uf:  '' });
-    }
+        selecionarOrcamento({ ...orcamentoSelecionada, Cep: cepInput, Uf: uf || '' });
+      } else {
+        selecionarOrcamento({ ...orcamentoSelecionada, Cep: cepInput, Uf: '' });
+      }
+   
   };
+  
 
 // // Se encontrou a UF, seleciona no dropdown
 // if (uf) {
