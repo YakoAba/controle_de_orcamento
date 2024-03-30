@@ -34,6 +34,8 @@ export type OrcamentoContextType = {
   orcamentos: Orcamento[];
   orcamentoSelecionada: Orcamento;
   item: Item;
+  admin: boolean;
+  setAdmin : (admin: boolean) => void;
   selecionarOrcamento: (orcamento: Orcamento) => void;
   setItem: (item: Item) => void;
   addOrcamento: (novaOrcamento: Orcamento) => Promise<void>;

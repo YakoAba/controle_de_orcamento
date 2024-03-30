@@ -15,6 +15,7 @@ export type ClienteContextType = {
   clienteSelecionada: Cliente | null;
   selecionarCliente: (cliente: Cliente) => void;
   addCliente: (novaCliente: Cliente) => Promise<void>;
+  carregarClientes:() => Promise<void>;
 };
 
 export interface InputProps {

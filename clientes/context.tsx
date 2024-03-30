@@ -51,7 +51,8 @@ export const ClienteProvider = ({ children }: ClienteProviderProps) => {
     clientes,
     clienteSelecionada,
     selecionarCliente,
-    addCliente
+    addCliente,
+    carregarClientes
   };
 
   return <ClienteContext.Provider value={contextValue}>{children}</ClienteContext.Provider>;

@@ -3,6 +3,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 import { getOrcamentos, addOrcamento as addOrcamentoAPI } from './services';
 import { Item, Orcamento, OrcamentoContextType, OrcamentoProviderProps } from './interface';
 
+
 // Criando o contexto
 const OrcamentoContext = createContext<OrcamentoContextType | undefined>(undefined);
 
@@ -15,6 +16,7 @@ export const useOrcamentoContext = () => {
 };
 
 export const OrcamentoProvider = ({ children }: OrcamentoProviderProps) => {
+  const [admin, setAdmin] = useState<boolean>(false);
   const [item, setItem] = useState<Item>({} as Item);
   const [orcamentos, setOrcamentos] = useState<Orcamento[]>([]);
   const [orcamentoSelecionada, setOrcamentoSelecionada] = useState<Orcamento>({} as Orcamento);
@@ -69,6 +71,8 @@ export const OrcamentoProvider = ({ children }: OrcamentoProviderProps) => {
     orcamentos,
     orcamentoSelecionada,
     item,
+    admin,
+    setAdmin,
     selecionarOrcamento,
     setItem,
     addOrcamento,
