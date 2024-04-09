@@ -14,7 +14,13 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
     setAdmin(name === 'admin')
   }, []);
 
-
+  function abrirNovaAbaComJson(json: string) {
+    // Cria a URL com o JSON como parâmetro
+    const url = `/relatorio?json=` + json;
+    // Abre a nova aba
+    window.open(url, "_blank");
+  }
+  
   function enviarDadosParaNodeJS() {
     console.log("Enviando dados para o Node.js:", JSON.stringify(orcamentoSelecionada));
     fetch("/api/orcamentos", {
@@ -36,6 +42,8 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
         if (data.id.mensagens && data.id.mensagens.length > 0) {
           data.id.mensagens.forEach((msg: { erro: any; }) => {
             if (msg.erro) console.error(msg.erro);
+            orcamentoSelecionada.id = data.id.id;
+            abrirNovaAbaComJson(JSON.stringify(orcamentoSelecionada));
           });
         }
       })
