@@ -12,7 +12,7 @@ export function middleware(req: NextRequest) {
     const authValue = basicAuth.split(' ')[1]
     const [user, pwd] = atob(authValue).split(':')
     const response = NextResponse.next();
-    response.cookies.set('log', 'admin');
+    response.cookies.set('log', '');
     if (user === 'admin' && pwd === 'admin') {
       response.cookies.set('log', 'admin');
       return response
