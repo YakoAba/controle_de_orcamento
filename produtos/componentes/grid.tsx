@@ -3,7 +3,7 @@ import { GridProdutosProps } from '../interface';
 import { Marca } from '@/marcas/interface';
 
 function buscarNomeMarcaPorId(id: string, marcas: Marca[]): string {
-    const selectedMarca = marcas.find(marca => marca.id === id);
+    const selectedMarca = marcas.find(marca => marca._id === id);
     if (selectedMarca)
       return selectedMarca.nome_marca
     else return ''
@@ -24,8 +24,8 @@ function GridProdutos({ produtos, marcas }: GridProdutosProps) {
         </thead>
         <tbody>
           {produtos?.map((produto, index) => (
-            <tr key={produto.id} style={{ backgroundColor: index % 2 === 0 ? '#f8f9fa' : '#e9ecef' }}>
-              <td>{produto.id}</td>
+            <tr key={produto._id} style={{ backgroundColor: index % 2 === 0 ? '#f8f9fa' : '#e9ecef' }}>
+              <td>{produto._id}</td>
               <td>{produto.nome_produto}</td>
               <td>{buscarNomeMarcaPorId(produto.id_marca, marcas)}</td>
               <td>{produto.data_cadastro}</td>

@@ -1,13 +1,10 @@
-import { getAllRecords, insertData } from "../db";
+import { insertData, getAllRecords, getRecordById } from '../db';
 
 // Função para realizar a inserção de dados
 export async function insertOne(data: any): Promise<void> {
-    const sql = `INSERT INTO produtos (id_marca, nome_produto) VALUES (?,?)`;
-    const values = [data.id_marca, data.nome_produto || null];
-
     try {
-        const lastInsertedId = await insertData(sql, values);
-        console.log('ID do último registro inserido:', lastInsertedId);
+        const insertedId = await insertData('produtos', data);
+        console.log('ID do último registro inserido:', insertedId);
         // Lógica adicional aqui após a inserção bem-sucedida
     } catch (error) {
         console.error('Erro ao inserir dados:', error);
@@ -16,27 +13,23 @@ export async function insertOne(data: any): Promise<void> {
 }
 
 // Exemplo de uso da função getAllRecords
-export async function getAll(): Promise<any> {
+export async function getAll(): Promise<any[]> {
     try {
-        const marcas = await getAllRecords('produtos');
-        return marcas;
+        const produtos = await getAllRecords('produtos');
+        return produtos;
     } catch (error) {
-        console.error('Erro ao buscar marcas:', error);
-        throw new Error('Falha ao buscar marcas no banco de dados');
+        console.error('Erro ao buscar produtos:', error);
+        throw new Error('Falha ao buscar produtos no banco de dados');
     }
 }
 
 // Exemplo de uso da função getRecordById
-export async function getById(Id: number): Promise<void> {
-
+export async function getById(id: string): Promise<any | null> {
     try {
-        // const marca = await dbInstance.get('SELECT * FROM marcas WHERE id = ?', [marcaId]);
-        // if (marca) {
-        //     console.log('Marca encontrada:', marca);
-        // } else {
-        //     console.log('Marca não encontrada.');
-        // }
+        const produto = await getRecordById('produtos', id);
+        return produto;
     } catch (error) {
-        console.error('Erro ao buscar marca:', error);
+        console.error('Erro ao buscar produto:', error);
+        throw new Error('Falha ao buscar produto no banco de dados');
     }
 }

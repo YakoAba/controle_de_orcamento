@@ -15,8 +15,8 @@ const GridMarcas: React.FC<GridMarcasProps> = ({ marcas }) => {
         </thead>
         <tbody>
           {marcas?.map((marca, index) => (
-            <tr key={marca.id} style={{ backgroundColor: index % 2 === 0 ? '#f8f9fa' : '#e9ecef' }}>
-              <td>{marca.id}</td>
+            <tr key={marca._id} style={{ backgroundColor: index % 2 === 0 ? '#f8f9fa' : '#e9ecef' }}>
+              <td>{marca._id}</td>
               <td>{marca.nome_marca}</td>
               <td>{marca.data_cadastro}</td>
             </tr>

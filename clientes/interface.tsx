@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 // Definindo o tipo para a cliente
 export type Cliente = {
-  id: string; // Identificador do cliente
+  _id: string; // Identificador do cliente
   nome_cliente: string;
   cpf_cliente: string;
   tipo_cliente: string;

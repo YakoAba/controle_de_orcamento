@@ -1,5 +1,6 @@
 import React from 'react';
-/* PrazosTable.module.css */interface PrazosTableProps {
+/* PrazosTable.module.css */
+interface PrazosTableProps {
   prazoEntrega: string;
   envio: string;
   cep: string;

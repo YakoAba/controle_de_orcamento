@@ -1,75 +1,35 @@
-import { getAllRecords, getRecordById, insertData } from "../db";
-interface Logs {
-    status: string;
-    dadosRecebidos: any;
-    mensagens: string[]; // Array de strings para as mensagens
-    id: number | null; // ID pode ser um número ou nulo
-}
+import { insertData, getAllRecords, getRecordById } from '../db';
+
 // Função para realizar a inserção de dados
-export async function insertOne(data: any): Promise<Logs> {
-    let logs: Logs = {
-        status: "sucesso",
-        dadosRecebidos: data,
-        mensagens: [],
-        id: null,
-    };
-
-    // const sql = 
-    // `
-    //     INSERT INTO orcamentos (
-    //         data_orcamento, validade_orcamento, nome_cliente, cpf_cliente,
-    //         tipo_cliente, forma_envio, uf_envio, cep_envio, valor_frete,
-    //         forma_pagamento, prazo_fabricacao, prazo_entrega, observacao
-    //     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    // `;
-    const sql = `INSERT INTO orcamentos (
-                 data, validade, cliente_id ) VALUES (?, ?, ?)`;
-    const values = [
-        data.data || null,
-        data.validade || null,
-        data.cliente_id || null,
-        // data.formaEnvio || null,
-        // data.ufEnvio || null,
-        // data.cepEnvio.replace(/\D+/g, '') || null,
-        // data.valorFrete || null,
-        // data.formaPagamento || null,
-        // data.prazoFabricacao || null,
-        // data.prazoEntrega || null,
-        // data.observacao || null,
-    ];
-
+export async function insertOne(data: any): Promise<void> {
     try {
-        const lastInsertedId = await insertData(sql, values);  // Chama a função insertData com o SQL e os valores
-        console.log('ID do último registro inserido:', lastInsertedId);
+        const insertedId = await insertData('orcamentos', data);
+        console.log('ID do último registro inserido:', insertedId);
         // Lógica adicional aqui após a inserção bem-sucedida
-        logs.mensagens.push('Inserção bem sucedida!');
-        logs.id = lastInsertedId;
-        return logs
     } catch (error) {
         console.error('Erro ao inserir dados:', error);
         // Tratar o erro aqui, se necessário
-        return logs
     }
 }
 
 // Exemplo de uso da função getAllRecords
-export async function getAll(): Promise<any> {
+export async function getAll(): Promise<any[]> {
     try {
         const orcamentos = await getAllRecords('orcamentos');
         return orcamentos;
     } catch (error) {
-        console.error('Erro ao buscar orcamentos:', error);
-        throw new Error('Falha ao buscar orcamentos no banco de dados');
+        console.error('Erro ao buscar orçamentos:', error);
+        throw new Error('Falha ao buscar orçamentos no banco de dados');
     }
 }
 
-// Exemplo de uso da função getAllRecords
-export async function getOne(id: number): Promise<any> {
+// Exemplo de uso da função getRecordById
+export async function getById(id: string): Promise<any | null> {
     try {
-        const orcamentos = await getRecordById('orcamentos', id);
-        return orcamentos;
+        const orcamento = await getRecordById('orcamentos', id);
+        return orcamento;
     } catch (error) {
-        console.error('Erro ao buscar orcamento:', error);
-        throw new Error('Falha ao buscar orcamento no banco de dados');
+        console.error('Erro ao buscar orçamento:', error);
+        throw new Error('Falha ao buscar orçamento no banco de dados');
     }
 }

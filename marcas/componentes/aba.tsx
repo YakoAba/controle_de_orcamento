@@ -15,7 +15,7 @@ export default function Aba() {
     }
 
     try {
-      const id = await addMarca({ nome_marca, id:'', data_cadastro:'' });
+      const id = await addMarca({ nome_marca, _id:'', data_cadastro:'' });
       console.log(id)
       setNome_Marca(''); // Limpa o campo de entrada após adicionar a marca
       alert('Marca adicionada com sucesso');

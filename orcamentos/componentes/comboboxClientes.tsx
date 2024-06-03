@@ -11,12 +11,12 @@ function ComboBoxClientes() {
 
   const handleClienteChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedClientId = event.target.value;
-    const selectedClient = clientes.find(cliente => cliente.id.toString() === selectedClientId);
+    const selectedClient = clientes.find(cliente => cliente._id.toString() === selectedClientId);
    
     if (selectedClient) {
       const updatedOrcamento = {
         ...orcamentoSelecionada,
-        cliente_id: selectedClient.id,
+        cliente_id: selectedClient._id,
         nome: selectedClient.nome_cliente,
         documento: selectedClient.cpf_cliente,
       };
@@ -41,7 +41,7 @@ function ComboBoxClientes() {
         onChange={handleClienteChange}>
         <option value="">Selecione</option>
         {clientes?.map((cliente) => (
-          <option key={cliente.id} value={cliente.id}>{cliente.nome_cliente}</option>
+          <option key={cliente._id} value={cliente._id}>{cliente.nome_cliente}</option>
         ))}
       </select>
       <div className='text-white'>

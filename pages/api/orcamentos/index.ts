@@ -1,17 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getAll, getOne, insertOne } from './db';
+import { getAll, insertOne, getById } from './db';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { method, query, body } = req;
+  const { method, query: { id }, body } = req;
 
   switch (method) {
     case 'POST':
       try {
-        const id = await insertOne(body);
-        res.status(200).json({ id });
+        const insertedId = await insertOne(body);
+        res.status(200).json({ insertedId });
       } catch (error: unknown) {
         if (error instanceof Error) {
           console.error('Erro ao processar requisição POST:', error);
@@ -24,10 +24,17 @@ export default async function handler(
 
     case 'GET':
       try {
-        const idParam = query.id as string;
-        const id = idParam ? parseInt(idParam, 10) : undefined;
-        const orcamentos = id !== undefined ? await getOne(id) : await getAll();
-        res.status(200).json({ orcamentos });
+        if (id) {
+          const orcamento = await getById(id as string);
+          if (orcamento) {
+            res.status(200).json(orcamento);
+          } else {
+            res.status(404).json({ error: 'Orçamento não encontrado' });
+          }
+        } else {
+          const orcamentos = await getAll();
+          res.status(200).json({ orcamentos });
+        }
       } catch (error: unknown) {
         if (error instanceof Error) {
           console.error('Erro ao processar requisição GET:', error);

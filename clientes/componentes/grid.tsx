@@ -17,8 +17,8 @@ const GridClientes: React.FC<GridClientesProps> = ({ clientes }) => {
         </thead>
         <tbody>
           {clientes.map((cliente, index) => (
-            <tr key={cliente.id} style={{ backgroundColor: index % 2 === 0 ? '#f8f9fa' : '#e9ecef' }}>
-              <td>{cliente.id}</td>
+            <tr key={cliente._id} style={{ backgroundColor: index % 2 === 0 ? '#f8f9fa' : '#e9ecef' }}>
+              <td>{cliente._id}</td>
               <td>{cliente.nome_cliente}</td>
               <td>{cliente.tipo_cliente}</td>
               <td>{cliente.cpf_cliente}</td>

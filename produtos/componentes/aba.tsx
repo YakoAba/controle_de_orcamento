@@ -19,7 +19,7 @@ export default function AbaProduto() {
         }
 
         try {
-            const id = await addProduto({ nome_produto, id_marca, nome_marca, id: '', data_cadastro: '' });
+            const id = await addProduto({ nome_produto, id_marca, nome_marca, _id: '', data_cadastro: '' });
             setNome_Produto(''); // Limpa o campo de entrada após adicionar a produto
             setNome_Marca('');
             setId_Marca('')
@@ -37,7 +37,6 @@ export default function AbaProduto() {
     const handleChangeMarca = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setId_Marca(event.target.value);
       };
-      
 
     return (
         <div className="mt-3 mb-3 text-white">

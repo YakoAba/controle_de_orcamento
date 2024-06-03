@@ -1,13 +1,10 @@
-import { insertData, getAllRecords } from '../db'; // Importe o caminho correto do seu arquivo
+import { insertData, getAllRecords, getRecordById } from '../db';
 
 // Função para realizar a inserção de dados
-export async function realizarInsercao(data: any): Promise<void> {
-    const sql = `INSERT INTO marcas (nome_marca) VALUES (?)`;
-    const values = [data.nome_marca || null];
-
+export async function insertOne(data: any): Promise<void> {
     try {
-        const lastInsertedId = await insertData(sql, values);
-        console.log('ID do último registro inserido:', lastInsertedId);
+        const insertedId = await insertData('marcas', data);
+        console.log('ID do último registro inserido:', insertedId);
         // Lógica adicional aqui após a inserção bem-sucedida
     } catch (error) {
         console.error('Erro ao inserir dados:', error);
@@ -16,27 +13,23 @@ export async function realizarInsercao(data: any): Promise<void> {
 }
 
 // Exemplo de uso da função getAllRecords
-export async function getMarcas(): Promise<any> {
+export async function getAll(): Promise<any[]> {
     try {
         const marcas = await getAllRecords('marcas');
         return marcas;
     } catch (error) {
         console.error('Erro ao buscar marcas:', error);
-       // throw new Error('Falha ao buscar marcas no banco de dados');
+        throw new Error('Falha ao buscar marcas no banco de dados');
     }
 }
 
 // Exemplo de uso da função getRecordById
-export async function getMarcaById(marcaId: number): Promise<void> {
-
+export async function getById(id: string): Promise<any | null> {
     try {
-        // const marca = await dbInstance.get('SELECT * FROM marcas WHERE id = ?', [marcaId]);
-        // if (marca) {
-        //     console.log('Marca encontrada:', marca);
-        // } else {
-        //     console.log('Marca não encontrada.');
-        // }
+        const marca = await getRecordById('marcas', id);
+        return marca;
     } catch (error) {
         console.error('Erro ao buscar marca:', error);
+        throw new Error('Falha ao buscar marca no banco de dados');
     }
 }

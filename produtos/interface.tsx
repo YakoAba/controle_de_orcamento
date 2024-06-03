@@ -2,7 +2,7 @@ import { Marca } from "@/marcas/interface";
 
 // Definindo o tipo para a produto
 export type Produto = {
-  id: string; // Identificador do produto
+  _id: string; // Identificador do produto
   nome_produto: string;
   nome_marca : string;
   id_marca: string

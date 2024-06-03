@@ -27,7 +27,7 @@ export default function AbaCliente() {
                 cpf_cliente: cpf_cliente,
                 tipo_cliente: tipo_cliente,
                 nome_cliente: nome_cliente,
-                id: '', // You may need to generate an ID here
+                _id: '', // You may need to generate an ID here
                 data_cadastro: '' // Set the date of registration if needed
             };
 

@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 // Definindo o tipo para a marca
 export type Marca = {
-  id: string;
+  _id: string;
   nome_marca: string;
   data_cadastro : string;
 };

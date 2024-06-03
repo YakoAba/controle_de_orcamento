@@ -19,7 +19,7 @@ export default function ComboBoxMarcas({ value, marcas, onChange }: MarcaInputPr
       >
         <option value="">Selecione</option>
         {marcas.map((marca) => (
-          <option key={marca.id} value={marca.id}>{marca.nome_marca}</option>
+          <option key={marca.id_marca} value={marca.id}>{marca.nome_marca}</option>
         ))}
       </select>
     </div>

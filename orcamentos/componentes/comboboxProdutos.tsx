@@ -14,15 +14,15 @@ export default function ComboboxProdutos() {
 
     const handleClienteChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const selectedProdutoId = event.target.value;
-        const selectedProduto = produtos.find(produto => produto.id.toString() === selectedProdutoId);
-        const selectedMarca = marcas.find(marca => marca.id === selectedProduto?.id_marca);
+        const selectedProduto = produtos.find(produto => produto._id.toString() === selectedProdutoId);
+        const selectedMarca = marcas.find(marca => marca._id === selectedProduto?.id_marca);
        console.log(JSON.stringify(selectedMarca))
        console.log(JSON.stringify(selectedProduto?.id_marca))
        
         if (selectedProduto) {
             const updatedItem = {
                 ...item,
-                produto_id: selectedProduto.id,
+                produto_id: selectedProduto._id,
                 nome: selectedProduto.nome_produto,
                 marca:  selectedMarca?selectedMarca.nome_marca:'',
                 marca_id: selectedProduto.id_marca,
@@ -58,7 +58,7 @@ export default function ComboboxProdutos() {
         >
             <option value="">Selecione</option>
             {produtos.map((item) => (
-                <option key={item.id} value={item.id}>{item.nome_produto}</option>
+                <option key={item._id} value={item._id}>{item.nome_produto}</option>
             ))}
         </select>
     </>
