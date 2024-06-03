@@ -46,7 +46,7 @@ export default function RelatorioOrcamento() {
           Validade do orçamento: {formatarDataBrasil(orcamento?.validade)}
         </p>
         <br />
-        <h2 id="orcamento_numero">ORÇAMENTO: {orcamento?._id}</h2>
+        <h2 id="orcamento_numero">ORÇAMENTO: {orcamento?.order}</h2>
         <br />
         <p className="s1 data" id="nome">
           Razão Social/Nome Completo:

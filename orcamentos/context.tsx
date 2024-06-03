@@ -41,7 +41,9 @@ export const OrcamentoProvider = ({ children }: OrcamentoProviderProps) => {
 
   const addOrcamento = async (novaOrcamento: Orcamento) => {
     try {
-      const id = await addOrcamentoAPI(novaOrcamento);;
+      const order = contarOrcamentos() + 1;
+      novaOrcamento.order = order; 
+      const id = await addOrcamentoAPI(novaOrcamento);
       await carregarOrcamentos(); // Recarrega a lista de orcamentos após a inserção
     } catch (error) {
       console.error('Erro ao adicionar orcamento:', error);
@@ -56,7 +58,13 @@ export const OrcamentoProvider = ({ children }: OrcamentoProviderProps) => {
       console.error('Erro ao adicionar item:', error);
       // Tratar erro conforme necessário
     }
+  }; 
+  
+  function contarOrcamentos() : number {
+    return orcamentos.length;
   };
+
+
   // Carrega as orcamentos ao iniciar o contexto
   useEffect(() => {
     carregarOrcamentos();
@@ -76,7 +84,8 @@ export const OrcamentoProvider = ({ children }: OrcamentoProviderProps) => {
     selecionarOrcamento,
     setItem,
     addOrcamento,
-    addItem
+    addItem,
+    contarOrcamentos
   };
 
   return <OrcamentoContext.Provider value={contextValue}>{children}</OrcamentoContext.Provider>;

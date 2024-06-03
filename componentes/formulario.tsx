@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Cookies from 'js-cookie'; // Importando o Cookies do pacote js-cookie
 
 export default function FormularioOrcamento({ dados, produtos, marca, produto, cliente }: any) {
-  const { orcamentoSelecionada } = useOrcamentoContext();
+  const { orcamentoSelecionada, contarOrcamentos } = useOrcamentoContext();
   const [admin, setAdmin] = useState(false)
 
   useEffect(() => {
@@ -22,6 +22,7 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
   }
   
   function enviarDadosParaNodeJS() {
+    orcamentoSelecionada.order = contarOrcamentos() + 1;
     console.log("Enviando dados para o Node.js:", JSON.stringify(orcamentoSelecionada));
     fetch("/api/orcamentos", {
       method: "POST",

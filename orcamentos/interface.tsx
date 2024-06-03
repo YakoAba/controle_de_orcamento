@@ -13,6 +13,7 @@ export type Item = {
 // Definindo o tipo para a orcamento
 export type Orcamento = {
   _id: string;
+  order: number;
   cliente_id: string;
   data: string;
   validade: string;
@@ -40,6 +41,7 @@ export type OrcamentoContextType = {
   setItem: (item: Item) => void;
   addOrcamento: (novaOrcamento: Orcamento) => Promise<void>;
   addItem: (novaItem: Item) => Promise<void>;
+  contarOrcamentos: () => number;
 };
 
 export type OrcamentoProviderProps = {

@@ -11,6 +11,7 @@ export default async function handler(
     case 'POST':
       try {
         const insertedId = await insertOne(body);
+        console.log(body)
         res.status(200).json({ insertedId });
       } catch (error: unknown) {
         if (error instanceof Error) {
