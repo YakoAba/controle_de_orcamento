@@ -39,13 +39,14 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
       })
       .then((data) => {
         console.log("Resposta do servidor:", data);
-        if (data.id.mensagens && data.id.mensagens.length > 0) {
-          data.id.mensagens.forEach((msg: { erro: any; }) => {
-            if (msg.erro) console.error(msg.erro);
-            orcamentoSelecionada.id = data.id.id;
-            abrirNovaAbaComJson(JSON.stringify(orcamentoSelecionada));
-          });
-        }
+        abrirNovaAbaComJson(JSON.stringify(orcamentoSelecionada));
+        // if (data.id.mensagens && data.id.mensagens.length > 0) {
+        //   data.id.mensagens.forEach((msg: { erro: any; }) => {
+        //     if (msg.erro) console.error(msg.erro);
+        //     orcamentoSelecionada._id = data.id.id;
+        //     abrirNovaAbaComJson(JSON.stringify(orcamentoSelecionada));
+        //   });
+        // }
       })
       .catch((error) => console.error("Erro na requisição:", error));
   }

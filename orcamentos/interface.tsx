@@ -12,7 +12,7 @@ export type Item = {
 }
 // Definindo o tipo para a orcamento
 export type Orcamento = {
-  id: string;
+  _id: string;
   cliente_id: string;
   data: string;
   validade: string;
