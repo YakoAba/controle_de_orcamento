@@ -16,8 +16,7 @@ export default function ComboboxProdutos() {
         const selectedProdutoId = event.target.value;
         const selectedProduto = produtos.find(produto => produto._id.toString() === selectedProdutoId);
         const selectedMarca = marcas.find(marca => marca._id === selectedProduto?.id_marca);
-       console.log(JSON.stringify(selectedMarca))
-       console.log(JSON.stringify(selectedProduto?.id_marca))
+
        
         if (selectedProduto) {
             const updatedItem = {

@@ -5,8 +5,7 @@ import { useOrcamentoContext } from "../context";
 import { Item } from "../interface";
 
 export default function AdicionarProduto() {
-  const { orcamentoSelecionada, selecionarOrcamento, item, setItem } =
-    useOrcamentoContext();
+  const { orcamentoSelecionada, selecionarOrcamento, item, setItem } =  useOrcamentoContext();
   const [showModal, setShowModal] = useState(false);
 
   // Função para adicionar um novo produto

@@ -20,17 +20,6 @@ export default function ProdutoOrcamentoModal({ show, onAdicionar, onClose, novo
       <Modal.Body className="bg-dark ">
         <Form.Group controlId="formNomeProdutoModal mb-0">
             <ComboboxProdutos/> 
-            {/* <label className="text-white" htmlFor={'nomeProduto'}>Marca:</label>
-            <input
-                id='marcaProduto'
-                type="text"
-                className="form-control bg-secondary text-white border-secondary mt-2 mb-2"
-                placeholder="Marca"
-                // value={novoProduto.marca}
-                onChange={(e) =>
-                    handleInputChange('marca', e.target.value)
-                }
-            /> */}
             <label className="text-white" htmlFor={'quantidadeProduto'}>Quantidade:</label>
             <input
                 id='quantidadeProduto'
