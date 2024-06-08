@@ -16,7 +16,7 @@ export function middleware(req: NextRequest) {
       response.cookies.set("log", "admin");
     } else if (user === "user" && pwd === "user") {
       response.cookies.set("log", "user");
-    } else response.cookies.set("log", "");
+    } else {response.cookies.set("log", "")}
     return response;
   }
   url.pathname = "/api/auth";
