@@ -9,6 +9,7 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
   const [userStatus, setUserStatus] = useState('');
 
   useEffect(() => {
+    setUserStatus('')
     // Chamada à API interna para verificar o status do usuário
     fetch('/api/isAdmin')
       .then(response => response.json())
@@ -64,9 +65,10 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
   }
 
   return (
+    (userStatus === 'admin' || userStatus === 'user') && 
     <div className="container mt-1 p-1">
       <ul className="nav nav-tabs" id="myTab" role="tablist">
-        {(userStatus === 'admin' || userStatus === 'user') && (
+        {(userStatus === 'admin') && (
           <>
             <li className="nav-item" role="presentation">
               <button className="nav-link" id="clientes-tab" data-bs-toggle="tab" data-bs-target="#clientes" type="button"
@@ -99,7 +101,7 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
           {produtos}
           <button type="button" onClick={() => enviarDadosParaNodeJS()} className="btn btn-primary mt-3" id="botaoImprimir">Imprimir</button>
         </div>
-        {(userStatus === 'admin' || userStatus === 'user') && (
+        {(userStatus === 'admin' ) && (
           <>
             <div className="tab-pane fade" id="marca" role="tabpanel" aria-labelledby="marca-tab">
               <MarcaProvider>{marca}</MarcaProvider>

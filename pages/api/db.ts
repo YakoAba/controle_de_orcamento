@@ -22,7 +22,7 @@ export class DatabaseSingleton {
   private async connect(): Promise<void> {
     try {
       const client = await MongoClient.connect("mongodb+srv://edudu9825:013842Dudu@shinkansen.6hvdq.mongodb.net/shinkansen?retryWrites=true&w=majority");
-      this.dbInstance = await client.db("orcamento");
+      this.dbInstance = client.db("orcamento");
     } catch (error) {
       throw new Error("Failed to connect to the database");
     }
