@@ -11,7 +11,6 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
 
   useEffect(() => {
     const name = Cookies.get('log'); // Corrigindo a obtenção do cookie
-    console.log(name)
     setAdmin(name === 'admin')
   }, []);
 
