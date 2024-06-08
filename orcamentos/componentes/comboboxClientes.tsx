@@ -17,7 +17,7 @@ function ComboBoxClientes() {
     carregar();
   }, [carregarClientes]); // UseEffect para carregar os clientes antes de renderizar
 
-  const handleClienteChange = async (event) => {
+  const handleClienteChange = async (event: { target: { value: any; }; }) => {
     const selectedClientId = event.target.value;
     const selectedClient = clientes.find(cliente => cliente._id.toString() === selectedClientId);
    
