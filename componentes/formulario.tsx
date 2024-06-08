@@ -8,10 +8,12 @@ import Cookies from 'js-cookie'; // Importando o Cookies do pacote js-cookie
 export default function FormularioOrcamento({ dados, produtos, marca, produto, cliente }: any) {
   const { orcamentoSelecionada, contarOrcamentos } = useOrcamentoContext();
   const [admin, setAdmin] = useState(false)
+  const [user, setUser] = useState(false)
 
   useEffect(() => {
     const name = Cookies.get('log'); // Corrigindo a obtenção do cookie
     setAdmin(name === 'admin')
+    setUser(name === 'user')
   }, []);
 
   function abrirNovaAbaComJson(json: string) {
