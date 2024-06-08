@@ -14,11 +14,10 @@ export function middleware(req: NextRequest) {
     const response = NextResponse.next();
     if (user === "admin" && pwd === "admin") {
       response.cookies.set("log", "admin");
-      return response;
     } else if (user === "user" && pwd === "user") {
       response.cookies.set("log", "user");
-      return response;
     } else response.cookies.set("log", "");
+    return response;
   }
   url.pathname = "/api/auth";
 
