@@ -17,7 +17,6 @@ export default function ComboboxProdutos() {
         const selectedProduto = produtos.find(produto => produto._id.toString() === selectedProdutoId);
         const selectedMarca = marcas.find(marca => marca._id === selectedProduto?.id_marca);
 
-       
         if (selectedProduto) {
             const updatedItem = {
                 ...item,
