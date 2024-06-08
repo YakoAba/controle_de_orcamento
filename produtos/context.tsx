@@ -1,7 +1,17 @@
-import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
-import { getProdutos, addProdutos as addProdutoAPI, getMarcas } from './services';
-import {Marca} from '../marcas/interface'
-import { Produto, ProdutoContextType } from './interface';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
+import {
+  getProdutos,
+  addProdutos as addProdutoAPI,
+  getMarcas,
+} from "./services";
+import { Marca } from "../marcas/interface";
+import { Produto, ProdutoContextType } from "./interface";
 
 // Criando o contexto
 const ProdutoContext = createContext<ProdutoContextType | undefined>(undefined);
@@ -9,7 +19,9 @@ const ProdutoContext = createContext<ProdutoContextType | undefined>(undefined);
 export const useProdutoContext = () => {
   const context = useContext(ProdutoContext);
   if (!context) {
-    throw new Error('useProdutoContext deve ser usado dentro de um ProdutoProvider');
+    throw new Error(
+      "useProdutoContext deve ser usado dentro de um ProdutoProvider"
+    );
   }
   return context;
 };
@@ -20,7 +32,9 @@ type ProdutoProviderProps = {
 
 export const ProdutoProvider = ({ children }: ProdutoProviderProps) => {
   const [produtos, setProdutos] = useState<Produto[]>([]);
-  const [produtoSelecionada, setProdutoSelecionada] = useState<Produto | null>(null);
+  const [produtoSelecionada, setProdutoSelecionada] = useState<Produto | null>(
+    null
+  );
   const [marcas, setMarcas] = useState<Marca[]>([]);
 
   const carregarMarcas = async () => {
@@ -28,7 +42,7 @@ export const ProdutoProvider = ({ children }: ProdutoProviderProps) => {
       const marcasData = await getMarcas();
       setMarcas(marcasData);
     } catch (error) {
-      console.error('Erro ao carregar produtos:', error);
+      console.error("Erro ao carregar produtos:", error);
       // Tratar erro conforme necessário
     }
   };
@@ -38,7 +52,7 @@ export const ProdutoProvider = ({ children }: ProdutoProviderProps) => {
       const produtosData = await getProdutos();
       setProdutos(produtosData);
     } catch (error) {
-      console.error('Erro ao carregar produtos:', error);
+      console.error("Erro ao carregar produtos:", error);
       // Tratar erro conforme necessário
     }
   };
@@ -49,18 +63,18 @@ export const ProdutoProvider = ({ children }: ProdutoProviderProps) => {
 
   const addProduto = async (novaProduto: Produto) => {
     try {
-      const id = await addProdutoAPI(novaProduto);;
+      const id = await addProdutoAPI(novaProduto);
       await carregarProdutos(); // Recarrega a lista de produtos após a inserção
     } catch (error) {
-      console.error('Erro ao adicionar produto:', error);
+      console.error("Erro ao adicionar produto:", error);
       // Tratar erro conforme necessário
     }
   };
   // Carrega as produtos ao iniciar o contexto
   useEffect(() => {
     carregarProdutos();
-    carregarMarcas();
   }, []);
+
 
   const contextValue: ProdutoContextType = {
     marcas,
@@ -68,7 +82,12 @@ export const ProdutoProvider = ({ children }: ProdutoProviderProps) => {
     produtoSelecionada,
     selecionarProduto,
     addProduto,
+    carregarMarcas
   };
 
-  return <ProdutoContext.Provider value={contextValue}>{children}</ProdutoContext.Provider>;
+  return (
+    <ProdutoContext.Provider value={contextValue}>
+      {children}
+    </ProdutoContext.Provider>
+  );
 };

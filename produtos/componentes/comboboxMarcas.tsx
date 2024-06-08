@@ -1,8 +1,8 @@
 import React from 'react';
 
 interface MarcaInputProps {
-  value: string; // Tipo para o valor do input
-  marcas: any[]; // Tipo para o valor do input
+  value: string; 
+  marcas: any[]; 
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void; 
 }
 

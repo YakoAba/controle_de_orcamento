@@ -13,6 +13,7 @@ export type MarcaContextType = {
   marcaSelecionada: Marca | null;
   selecionarMarca: (marca: Marca) => void;
   addMarca: (novaMarca: Marca) => Promise<void>;
+  carregarMarcas:() => Promise<void>;
 };
 
 export type MarcaProviderProps = {

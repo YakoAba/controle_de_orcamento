@@ -16,6 +16,7 @@ export type ProdutoContextType = {
   produtoSelecionada: Produto | null;
   selecionarProduto: (produto: Produto) => void;
   addProduto: (novaProduto: Produto) => Promise<void>;
+  carregarMarcas: () => Promise<void>;
 };
 
 export interface NomeInputProps {

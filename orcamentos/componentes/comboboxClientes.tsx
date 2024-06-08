@@ -1,15 +1,23 @@
 import { useOrcamentoContext } from '../context';
-import { useClienteContext, ClienteProvider } from '@/clientes/context';
-import { ChangeEvent, useState } from 'react';
+import { useClienteContext } from '@/clientes/context';
+import { useEffect, useState } from 'react';
 
 function ComboBoxClientes() {
-  const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext()
-  const { clientes } = useClienteContext()
-  //const [clientes, setClientes] = useState<Cliente[]>([]);
+  const { orcamentoSelecionada, selecionarOrcamento } = useOrcamentoContext();
+  const { clientes, carregarClientes } = useClienteContext();
   const [cpf, setCpf] = useState('');
   const [tipo, setTipo] = useState('');
+  const [clientesCarregados, setClientesCarregados] = useState(false); // Estado para controlar se os clientes foram carregados
 
-  const handleClienteChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  useEffect(() => {
+    const carregar = async () => {
+      await carregarClientes();
+      setClientesCarregados(true);
+    };
+    carregar();
+  }, [carregarClientes]); // UseEffect para carregar os clientes antes de renderizar
+
+  const handleClienteChange = async (event) => {
     const selectedClientId = event.target.value;
     const selectedClient = clientes.find(cliente => cliente._id.toString() === selectedClientId);
    
@@ -20,17 +28,16 @@ function ComboBoxClientes() {
         nome: selectedClient.nome_cliente,
         documento: selectedClient.cpf_cliente,
       };
-      selecionarOrcamento(updatedOrcamento)
+      selecionarOrcamento(updatedOrcamento);
       setTipo(selectedClient.tipo_cliente);
       setCpf(selectedClient.cpf_cliente); // Supondo que o cliente possui uma propriedade "cpf"
     } else {
       setTipo('');
       setCpf(''); // Caso não encontre o cliente, limpa o CPF
- 
     }
   };
 
-  return (
+  return clientesCarregados && (
     <div className="form-group mt-2 mb-2">
       <label htmlFor='ComboBoxClientes' className='text-white'>Clientes:</label>
       <select

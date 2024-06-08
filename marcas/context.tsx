@@ -49,7 +49,8 @@ export const MarcaProvider = ({ children }: MarcaProviderProps) => {
     marcas,
     marcaSelecionada,
     selecionarMarca,
-    addMarca
+    addMarca,
+    carregarMarcas
   };
 
   return <MarcaContext.Provider value={contextValue}>{children}</MarcaContext.Provider>;
