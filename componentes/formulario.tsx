@@ -1,6 +1,3 @@
-import { MarcaProvider, useMarcaContext } from "@/marcas/context";
-import { ProdutoProvider, useProdutoContext } from "@/produtos/context";
-import { ClienteProvider, useClienteContext } from "@/clientes/context";
 import { useOrcamentoContext } from "@/orcamentos/context";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie"; // Importando o Cookies do pacote js-cookie
@@ -16,7 +13,7 @@ export default function FormularioOrcamento({
   const [admin, setAdmin] = useState(false);
   const [user, setUser] = useState(false);
 
-  useEffect(() => {
+  useEffect( () =>  {
     const name = Cookies.get("log"); // Corrigindo a obtenção do cookie
     setAdmin(name === "admin");
     setUser(name === "user");
@@ -52,20 +49,12 @@ export default function FormularioOrcamento({
       .then((data) => {
         console.log("Resposta do servidor:", data);
         abrirNovaAbaComJson(JSON.stringify(orcamentoSelecionada));
-        // if (data.id.mensagens && data.id.mensagens.length > 0) {
-        //   data.id.mensagens.forEach((msg: { erro: any; }) => {
-        //     if (msg.erro) console.error(msg.erro);
-        //     orcamentoSelecionada._id = data.id.id;
-        //     abrirNovaAbaComJson(JSON.stringify(orcamentoSelecionada));
-        //   });
-        // }
       })
       .catch((error) => console.error("Erro na requisição:", error));
   }
 
 
   return (
-    (admin || user) && (
       <div className="container mt-1 p-1">
         <ul className="nav nav-tabs" id="myTab" role="tablist">
           {admin && (
@@ -204,5 +193,4 @@ export default function FormularioOrcamento({
         </div>
       </div>
     )
-  );
 }
