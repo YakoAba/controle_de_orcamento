@@ -13,19 +13,10 @@ interface ProdutoOrcamentoProps {
 }
 
 export default function ProdutoOrcamentoModal({ show, onAdicionar, onClose, novoItem, setItem }:ProdutoOrcamentoProps) {
-  const [produtosCarregados, setProdutosCarregados] = useState(false);
-
-  useEffect(() => {
-    const carregarProdutos = async () => {
-      await getProdutos();
-      setProdutosCarregados(true);
-    };
-    carregarProdutos();
-  }, []);
 
   return (
     <>
-      {produtosCarregados && (
+      {
         <Modal className="bg-light-silver" show={show} onHide={onClose}>
           <Modal.Header className="bg-dark" closeButton>
             <Modal.Title className="text-white">Adicionar Produto</Modal.Title>
@@ -64,7 +55,7 @@ export default function ProdutoOrcamentoModal({ show, onAdicionar, onClose, novo
             </Button>
           </Modal.Body>
         </Modal>
-      )}
+      }
     </>
   );
 }

@@ -39,7 +39,7 @@ export default function AdicionarProduto() {
     setShowModal(false);
   };
 
-  const handleShow = () => setShowModal(true);
+  const handleShow = () => {setShowModal(true);}
 
   // Função para remover um produto pelo ID
   const removerProduto = (id: string) => {
