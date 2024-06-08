@@ -78,6 +78,7 @@ export default function FormularioOrcamento({ dados, produtos, marca, produto, c
   }
 
   return (
+   ( admin || user) &&
     <div className="container mt-1 p-1">
       <ul className="nav nav-tabs" id="myTab" role="tablist">
         {admin && <><li className="nav-item" role="presentation">
