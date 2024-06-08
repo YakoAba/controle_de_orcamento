@@ -7,15 +7,21 @@ function ComboBoxClientes() {
   const { clientes, carregarClientes } = useClienteContext();
   const [cpf, setCpf] = useState('');
   const [tipo, setTipo] = useState('');
-  const [clientesCarregados, setClientesCarregados] = useState(false); // Estado para controlar se os clientes foram carregados
+  const [clientesCarregados, setClientesCarregados] = useState(false);
 
   useEffect(() => {
     const carregar = async () => {
-      await carregarClientes();
-      setClientesCarregados(true);
+      try {
+        await carregarClientes();
+        setClientesCarregados(true);
+      } catch (error) {
+        console.error('Erro ao carregar clientes:', error);
+        // Trate o erro de acordo com a sua lógica de tratamento de erros
+        setClientesCarregados(false); // Certifique-se de definir como false em caso de erro
+      }
     };
     carregar();
-  }, [carregarClientes]); // UseEffect para carregar os clientes antes de renderizar
+  }, [carregarClientes]);
 
   const handleClienteChange = async (event: { target: { value: any; }; }) => {
     const selectedClientId = event.target.value;
@@ -30,14 +36,14 @@ function ComboBoxClientes() {
       };
       selecionarOrcamento(updatedOrcamento);
       setTipo(selectedClient.tipo_cliente);
-      setCpf(selectedClient.cpf_cliente); // Supondo que o cliente possui uma propriedade "cpf"
+      setCpf(selectedClient.cpf_cliente);
     } else {
       setTipo('');
-      setCpf(''); // Caso não encontre o cliente, limpa o CPF
+      setCpf('');
     }
   };
 
-  return clientesCarregados && (
+  return clientesCarregados ? (
     <div className="form-group mt-2 mb-2">
       <label htmlFor='ComboBoxClientes' className='text-white'>Clientes:</label>
       <select
@@ -45,7 +51,9 @@ function ComboBoxClientes() {
         className="form-select bg-secondary text-white border-secondary"
         name='ComboBoxClientes'
         value={orcamentoSelecionada.cliente_id}
-        onChange={handleClienteChange}>
+        onChange={handleClienteChange}
+        disabled={!clientesCarregados} // Desabilita o combo enquanto os clientes estiverem sendo carregados
+      >
         <option value="">Selecione</option>
         {clientes?.map((cliente) => (
           <option key={cliente._id} value={cliente._id}>{cliente.nome_cliente}</option>
@@ -55,8 +63,22 @@ function ComboBoxClientes() {
         CPF do cliente selecionado: {cpf}
       </div>
       <div className='text-white'>
-        Tipo do cliente selecionado: {tipo==='pf'?'Pessoa Fisica':'Pessoa Juridica'}
+        Tipo do cliente selecionado: {tipo === 'pf' ? 'Pessoa Física' : 'Pessoa Jurídica'}
       </div>
+    </div>
+  ) : (
+    <div className="form-group mt-2 mb-2">
+      <label htmlFor='ComboBoxClientes' className='text-white'>Clientes:</label>
+      <select
+        id='ComboBoxClientes'
+        className="form-select bg-secondary text-white border-secondary"
+        name='ComboBoxClientes'
+        value={orcamentoSelecionada.cliente_id}
+        onChange={handleClienteChange}
+        disabled // Desabilita o combo enquanto os clientes estiverem sendo carregados
+      >
+        <option value="">Carregando...</option>
+      </select>
     </div>
   );
 }

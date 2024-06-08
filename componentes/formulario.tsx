@@ -13,8 +13,6 @@ export default function FormularioOrcamento({
   cliente,
 }: any) {
   const { orcamentoSelecionada, contarOrcamentos } = useOrcamentoContext();
-  const { carregarClientes } = useClienteContext();
-  const { carregarMarcas } = useProdutoContext();
   const [admin, setAdmin] = useState(false);
   const [user, setUser] = useState(false);
 
@@ -157,7 +155,7 @@ export default function FormularioOrcamento({
             role="tabpanel"
             aria-labelledby="dados-tab"
           >
-            <ClienteProvider>{dados}</ClienteProvider>
+           {dados}
           </div>
           <div
             className="tab-pane fade"
@@ -183,7 +181,7 @@ export default function FormularioOrcamento({
                 role="tabpanel"
                 aria-labelledby="marca-tab"
               >
-                <MarcaProvider>{marca}</MarcaProvider>
+               {marca}
               </div>
               <div
                 className="tab-pane fade"
@@ -191,7 +189,7 @@ export default function FormularioOrcamento({
                 role="tabpanel"
                 aria-labelledby="clientes-tab"
               >
-                <ClienteProvider>{cliente}</ClienteProvider>
+               {cliente}
               </div>
               <div
                 className="tab-pane fade"
@@ -199,7 +197,7 @@ export default function FormularioOrcamento({
                 role="tabpanel"
                 aria-labelledby="produto-tab"
               >
-                <ProdutoProvider>{produto}</ProdutoProvider>
+               {produto}
               </div>
             </>
           )}
