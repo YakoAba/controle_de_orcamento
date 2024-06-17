@@ -21,8 +21,15 @@ export class DatabaseSingleton {
 
   private async connect(): Promise<void> {
     try {
-      const client = await MongoClient.connect("mongodb+srv://edudu9825:013842Dudu@shinkansen.6hvdq.mongodb.net/shinkansen?retryWrites=true&w=majority");
-      this.dbInstance = client.db("orcamento");
+      const url = process.env.URLMONGODB;
+      const dbName = process.env.BD;
+
+      if (!url || !dbName) {
+        throw new Error("String de conexão do banco de dados ou nome do banco de dados ausente nas variáveis de ambiente");
+      }
+
+      const client = await MongoClient.connect(url);
+      this.dbInstance = client.db(dbName);
     } catch (error) {
       throw new Error("Failed to connect to the database");
     }
